@@ -23,7 +23,6 @@ class CreateAbsensiTable extends Migration
             $table->time('start');
             $table->time('finish');
             $table->integer('jumlah_ot');
-            $table->text('signature');
             $table->string('km');
             $table->string('usage');
             $table->string('progress');

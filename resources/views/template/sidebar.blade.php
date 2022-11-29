@@ -9,7 +9,7 @@
 
         @if (auth()->user()->role == 'user')
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('attendance.create') }}">
+            <a class="nav-link" href="{{ route('attendance.index') }}">
                 <i class="icon-grid-2 menu-icon"></i>
                 <span class="menu-title">Attendance</span>
             </a>

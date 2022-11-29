@@ -16,8 +16,8 @@ class AttendanceController extends Controller
     public function index()
     {
         $attendances = Attendance::latest()->paginate(5);
-        // $users = User::select("users.id", "users.name", "users.email", "countries.name as country_name")
-        // ->leftJoin("countries", "countries.id", "=", "users.country_id")
+        // $users = User::select("users.id", "users.name", "users.role", "countries.name as country_name")
+        // ->leftJoin("attendance", "attendance.user_id", "=", "users.id")
         // ->get();
 
         return view('attendance.index', compact('attendances'))
@@ -52,7 +52,6 @@ class AttendanceController extends Controller
             'start' => 'required',
             'finish' => 'required',
             'jumlah_ot' => 'required',
-            'signature' => 'required',
             'km' => 'required',
             'usage' => 'required',
             'progress' => 'required',
@@ -111,7 +110,6 @@ class AttendanceController extends Controller
             'start' => 'required',
             'finish' => 'required',
             'jumlah_ot' => 'required',
-            'signature' => 'required',
             'km' => 'required',
             'usage' => 'required',
             'progress' => 'required',

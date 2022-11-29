@@ -235,7 +235,7 @@
                                                     <label class="col-sm-3 col-form-label">Nama</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="name" class="form-control"
-                                                            placeholder="Name">
+                                                            placeholder="Name" value="{{auth()->user()->name}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -310,7 +310,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            {{-- <div class="col-md-6">
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Signature</label>
                                                     <div class="col-sm-9">
@@ -318,7 +318,7 @@
                                                             placeholder="Signature">
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="col-md-6">
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Pemakaian</label>
@@ -376,3 +376,5 @@
 </body>
 
 </html>
+
+

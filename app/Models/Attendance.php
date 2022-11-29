@@ -19,7 +19,6 @@ class Attendance extends Model
         'start',
         'finish',
         'jumlah_ot',
-        'signature',
         'km',
         'usage',
         'progress',
