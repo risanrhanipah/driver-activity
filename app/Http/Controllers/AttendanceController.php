@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AttendanceController extends Controller
@@ -15,6 +16,9 @@ class AttendanceController extends Controller
     public function index()
     {
         $attendances = Attendance::latest()->paginate(5);
+        // $users = User::select("users.id", "users.name", "users.email", "countries.name as country_name")
+        // ->leftJoin("countries", "countries.id", "=", "users.country_id")
+        // ->get();
 
         return view('attendance.index', compact('attendances'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
