@@ -15,6 +15,7 @@ class CreateAbsensiTable extends Migration
     {
         Schema::create('attendance', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->date('date');
             $table->time('in');
@@ -28,6 +29,8 @@ class CreateAbsensiTable extends Migration
             $table->string('progress');
             $table->text('ket');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

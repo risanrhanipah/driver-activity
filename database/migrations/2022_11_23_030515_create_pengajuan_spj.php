@@ -15,11 +15,14 @@ class CreatePengajuanSpj extends Migration
     {
         Schema::create('pengajuan_spj', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->date('date_pengajuan');
             $table->string('spj');
             $table->string('ket');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
