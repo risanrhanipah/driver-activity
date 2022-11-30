@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Attendance;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AttendanceController extends Controller
 {
@@ -15,10 +16,10 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        $attendances = Attendance::latest()->paginate(5);
-        // $users = User::select("users.id", "users.name", "users.role", "countries.name as country_name")
-        // ->leftJoin("attendance", "attendance.user_id", "=", "users.id")
-        // ->get();
+        // $attendances = Attendance::latest()->paginate(5);
+        $attendances = User::select("users.id", "users.name", "users.role", DB::raw('COUNT(attendance.user_id) as totalAbsen'))
+        ->leftJoin("attendance", "attendance.user_id", "=", "users.id")
+        ->latest("attendance.created_at")->paginate(5);
 
         return view('attendance.index', compact('attendances'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -58,7 +59,9 @@ class AttendanceController extends Controller
             'ket' => 'required',
         ]);
 
-        Attendance::create($request->all());
+        $attendance = $request->user()->attendance()->create($request->all());
+
+        // Attendance::create($request->all());
 
         return redirect()->route('attendance.index')->with('created successfully');
     }
@@ -69,9 +72,9 @@ class AttendanceController extends Controller
      * @param  \App\Models\Attendance  $attendance
      * @return \Illuminate\Http\Response
      */
-    public function show(Attendance $attendance)
+    public function show($attendance)
     {
-        $attendances = Attendance::latest()->paginate(5);
+        $attendances = Attendance::where('user_id', $attendance)->paginate(5);
         return view('attendance.show', compact('attendances'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
 
