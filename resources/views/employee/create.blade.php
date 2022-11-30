@@ -201,60 +201,151 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="row">
-                        <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="col-12 grid-margin">
                             <div class="card">
                                 <div class="card-body">
                                     <br>
-                                    <h4 class="card-title">Pengajuan SPJ</h4>
-                                    @if (auth()->user()->role == 'user')
-                                    <div class="pull-right">
-                                        <a href="{{ route('pengajuan_spj.create') }}"><i
-                                                class="mdi mdi-account-multiple-plus mdi-24px"
-                                                style="color:#00008B;"></i></a>
+                                    <h4 class="card-title">Employee input</h4>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="pull-right">
+                                                <a href="{{ route('employee.index') }}"><i
+                                                        class="mdi mdi-arrow-left-bold-circle mdi-24px"
+                                                        style="color:#00008B; text-align:right;"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
                                     </div>
                                     @endif
 
-                                    @if ($message = Session::get('success'))
-                                    <div class="alert alert-success">
-                                        <p>{{ $message }}</p>
-                                    </div>
-                                    @endif
-
-                                    <br>
-                                    <div class="table-responsive">
-                                        <table id="datatable" class="table table-striped" style="width:100%">
-                                            <thead>
-                                                <tr style="text-align:center;">
-                                                    <th width="50px">No</th>
-                                                    <th width="100px">Profile</th>
-                                                    <th width="250px">Name</th>
-                                                    <th width="100px">Site</th>
-                                                    <th width="100px">Penempatan</th>
-                                                    <th width="100px">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($pengajuan_spj as $pengajuanspj)
-                                                <tr style="text-align:center;">
-                                                    <td>{{ ++$i }}</td>
-                                                    <td>
-                                                        <img src="../assets/images/faces/employee.png"
-                                                            alt="{{ $pengajuanspj->profile}}" />
-                                                        </img>
-                                                    </td>
-                                                    <td>{{ $pengajuanspj->name }}</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td>
-                                                        <a href="{{ route('pengajuan_spj.show',$pengajuanspj->id) }}"><i
-                                                                class="mdi mdi-eye-off mdi-24px"
-                                                                style="color:#00008B;"></i></a>
-                                                    </td>
-                                                </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                    <form class="form-sample" action="{{ route('employee.store') }}" method="POST">
+                                        @csrf
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Photo</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="file" name="photo" class="form-control"
+                                                            placeholder="Photo">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Nama</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="name" class="form-control"
+                                                            placeholder="Name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Tempat Lahir</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="born_city" class="form-control"
+                                                            placeholder="Tempat Lahir">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Tanggal Lahir</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="date " name="birthday" class="form-control"
+                                                            placeholder="Tanggal Lahir">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Jenis Kelamin</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="gender" class="form-control"
+                                                            placeholder="Jenis Kelamin">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Alamat</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="address" class="form-control"
+                                                            placeholder="Alamat">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Agama</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="religion" class="form-control"
+                                                            placeholder="Agama">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Jabatan</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="position" class="form-control"
+                                                            placeholder="Jabatan">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Penempatan</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="sites" class="form-control"
+                                                            placeholder="Penempatan">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Nomor Telpon</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="phone_number" class="form-control"
+                                                            placeholder="Nomor Telpon">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Email</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="email" class="form-control"
+                                                            placeholder="Email">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12 text-right">
+                                                <button type="submit" style="border:0; background-color:transparent"><i
+                                                        class="mdi mdi-telegram mdi-36px"
+                                                        style="color:#00008B;"></i></button><br>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -271,12 +362,8 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <!-- endinject -->
-    <!-- Custom js for this page-->
-    <!-- End custom js f   or this page-->
+    @include('template.plugin')
+    <!-- End custom js for this page-->
 </body>
-@include('template.plugin')
 
 </html>
-
-<!-- {{ $pengajuan_spj->links() }} -->

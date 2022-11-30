@@ -205,14 +205,12 @@
                             <div class="card">
                                 <div class="card-body">
                                     <br>
-                                    <h4 class="card-title">Pengajuan SPJ</h4>
-                                    @if (auth()->user()->role == 'user')
+                                    <h4 class="card-title">Employee</h4>
                                     <div class="pull-right">
-                                        <a href="{{ route('pengajuan_spj.create') }}"><i
+                                        <a href="{{ route('employee.create') }}"><i
                                                 class="mdi mdi-account-multiple-plus mdi-24px"
                                                 style="color:#00008B;"></i></a>
                                     </div>
-                                    @endif
 
                                     @if ($message = Session::get('success'))
                                     <div class="alert alert-success">
@@ -225,28 +223,42 @@
                                         <table id="datatable" class="table table-striped" style="width:100%">
                                             <thead>
                                                 <tr style="text-align:center;">
-                                                    <th width="50px">No</th>
-                                                    <th width="100px">Profile</th>
-                                                    <th width="250px">Name</th>
-                                                    <th width="100px">Site</th>
-                                                    <th width="100px">Penempatan</th>
+                                                    <th>No</th>
+                                                    <th>Profile</th>
+                                                    <th>Name</th>
+                                                    <th>Tempat Lahir</th>
+                                                    <th>Tanggal Lahir</th>
+                                                    <th>Jenis Kelamin</th>
+                                                    <th>Alamat</th>
+                                                    <th>Agama</th>
+                                                    <th>Jabatan</th>
+                                                    <th>Penempatan</th>
+                                                    <th>Nomor Telpon</th>
+                                                    <th>Email</th>
                                                     <th width="100px">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($pengajuan_spj as $pengajuanspj)
+                                                @foreach ($employees as $employee)
                                                 <tr style="text-align:center;">
                                                     <td>{{ ++$i }}</td>
                                                     <td>
                                                         <img src="../assets/images/faces/employee.png"
-                                                            alt="{{ $pengajuanspj->profile}}" />
+                                                            alt="{{ $employee->profile}}" />
                                                         </img>
                                                     </td>
-                                                    <td>{{ $pengajuanspj->name }}</td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td>{{ $employee->name }}</td>
+                                                    <td>{{ $employee->born_city }}</td>
+                                                    <td>{{ $employee->birthday }}</td>
+                                                    <td>{{ $employee->gender }}</td>
+                                                    <td>{{ $employee->address }}</td>
+                                                    <td>{{ $employee->religion }}</td>
+                                                    <td>{{ $employee->position }}</td>
+                                                    <td>{{ $employee->sites }}</td>
+                                                    <td>{{ $employee->phone_number }}</td>
+                                                    <td>{{ $employee->email }}</td>
                                                     <td>
-                                                        <a href="{{ route('pengajuan_spj.show',$pengajuanspj->id) }}"><i
+                                                        <a href="{{ route('employee.show',$employee->id) }}"><i
                                                                 class="mdi mdi-eye-off mdi-24px"
                                                                 style="color:#00008B;"></i></a>
                                                     </td>
@@ -278,5 +290,3 @@
 @include('template.plugin')
 
 </html>
-
-<!-- {{ $pengajuan_spj->links() }} -->

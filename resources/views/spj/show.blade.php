@@ -205,15 +205,12 @@
                             <div class="card">
                                 <div class="card-body">
                                     <br>
-                                    <h4 class="card-title">Pengajuan SPJ</h4>
-                                    @if (auth()->user()->role == 'user')
+                                    <h4 class="card-title"> List Attendance</h4>
                                     <div class="pull-right">
-                                        <a href="{{ route('pengajuan_spj.create') }}"><i
-                                                class="mdi mdi-account-multiple-plus mdi-24px"
-                                                style="color:#00008B;"></i></a>
+                                        <a href="{{ route('pengajuan_spj.index') }}"><i
+                                                class="mdi mdi-arrow-left-bold-circle mdi-24px"
+                                                style="color:#00008B; text-align:right;"></i></a>
                                     </div>
-                                    @endif
-
                                     @if ($message = Session::get('success'))
                                     <div class="alert alert-success">
                                         <p>{{ $message }}</p>
@@ -225,12 +222,13 @@
                                         <table id="datatable" class="table table-striped" style="width:100%">
                                             <thead>
                                                 <tr style="text-align:center;">
-                                                    <th width="50px">No</th>
-                                                    <th width="100px">Profile</th>
-                                                    <th width="250px">Name</th>
-                                                    <th width="100px">Site</th>
-                                                    <th width="100px">Penempatan</th>
-                                                    <th width="100px">Action</th>
+                                                    <th>No</th>
+                                                    <th>Profile</th>
+                                                    <th>Name</th>
+                                                    <th>Tanggal Pengajuan</th>
+                                                    <th>Draft SPJ</th>
+                                                    <th>Keterangan</th>
+                                                    <th width="150px">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -243,13 +241,28 @@
                                                         </img>
                                                     </td>
                                                     <td>{{ $pengajuanspj->name }}</td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td>{{ $pengajuanspj->date_pengajuan }}</td>
+                                                    <td>{{ $pengajuanspj->spj }}</td>
+                                                    <td>{{ $pengajuanspj->ket }}</td>
                                                     <td>
-                                                        <a href="{{ route('pengajuan_spj.show',$pengajuanspj->id) }}"><i
-                                                                class="mdi mdi-eye-off mdi-24px"
-                                                                style="color:#00008B;"></i></a>
+                                                        <form
+                                                            action="{{ route('pengajuan_spj.destroy',$pengajuanspj->id) }}"
+                                                            method="POST">
+                                                            <a
+                                                                href=" {{ route('pengajuan_spj.edit',$pengajuanspj->id) }}"><i
+                                                                    class="mdi mdi-account-edit mdi-24px"
+                                                                    style="color:#E1B401;"></i></a>
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit"
+                                                                style="border:0; background-color:transparent">
+                                                                <a class="mdi mdi-delete-empty mdi-24px"
+                                                                    style="color:#D11010;"
+                                                                    onclick="return confirm('Are you sure?')"></a>
+                                                            </button>
+                                                        </form>
                                                     </td>
+
                                                 </tr>
                                                 @endforeach
                                             </tbody>
@@ -273,10 +286,8 @@
     <!-- plugins:js -->
     <!-- endinject -->
     <!-- Custom js for this page-->
-    <!-- End custom js f   or this page-->
+    <!-- End custom js for this page-->
 </body>
 @include('template.plugin')
 
 </html>
-
-<!-- {{ $pengajuan_spj->links() }} -->

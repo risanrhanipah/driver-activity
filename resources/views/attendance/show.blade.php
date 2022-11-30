@@ -264,10 +264,6 @@
                                                         <form action="{{ route('attendance.destroy',$attendance->id) }}"
                                                             method="POST">
 
-                                                            <a href="{{ route('attendance.show',$attendance->id) }}"><i
-                                                                    class="mdi mdi-eye-off mdi-24px"
-                                                                    style="color:#00008B;"></i></a>
-
                                                             <a href=" {{ route('attendance.edit',$attendance->id) }}"><i
                                                                     class="mdi mdi-account-edit mdi-24px"
                                                                     style="color:#F1C40F;"></i></a>
@@ -276,7 +272,7 @@
                                                             <button type="submit"
                                                                 style="border:0; background-color:transparent">
                                                                 <a class="mdi mdi-delete-empty mdi-24px"
-                                                                    style="color:#FF0000;"
+                                                                    style="color:#D11010;"
                                                                     onclick="return confirm('Are you sure?')"></a>
                                                             </button>
                                                         </form>

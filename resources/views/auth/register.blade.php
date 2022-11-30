@@ -111,8 +111,9 @@
                                             </div>
                                         </div>
                                         <div class="text-center mt-4 font-weight-light">
-                                            Already have an account? <a href="login" class="text-primary">Login</a>
+                                            Already have an account? <a href="login" class="text-primary">Sign in</a>
                                         </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>

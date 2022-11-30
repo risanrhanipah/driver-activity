@@ -206,11 +206,13 @@
                                 <div class="card-body">
                                     <br>
                                     <h4 class="card-title">Attendance</h4>
+                                    @if (auth()->user()->role == 'user')
                                     <div class="pull-right">
                                         <a href="{{ route('attendance.create') }}"><i
                                                 class="mdi mdi-account-multiple-plus mdi-24px"
                                                 style="color:#00008B;"></i></a>
                                     </div>
+                                    @endif
 
                                     @if ($message = Session::get('success'))
                                     <div class="alert alert-success">
@@ -237,7 +239,7 @@
                                                     <th>Pemakaian</th>
                                                     <th>Progress</th>
                                                     <th>Keterangan</th>
-                                                    <th width="280px">Action</th>
+                                                    <th width="100px">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -262,25 +264,9 @@
                                                     <td>{{ $attendance->progress}}</td>
                                                     <td>{{ $attendance->ket }}</td>
                                                     <td>
-                                                        <form action="{{ route('attendance.destroy',$attendance->id) }}"
-                                                            method="POST">
-
-                                                            <a href="{{ route('attendance.show',$attendance->id) }}"><i
-                                                                    class="mdi mdi-eye-off mdi-24px"
-                                                                    style="color:#00008B;"></i></a>
-
-                                                            <a href=" {{ route('attendance.edit',$attendance->id) }}"><i
-                                                                    class="mdi mdi-account-edit mdi-24px"
-                                                                    style="color:#F1C40F;"></i></a>
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit"
-                                                                style="border:0; background-color:transparent">
-                                                                <a class="mdi mdi-delete-empty mdi-24px"
-                                                                    style="color:#FF0000;"
-                                                                    onclick="return confirm('Are you sure?')"></a>
-                                                            </button>
-                                                        </form>
+                                                        <a href="{{ route('attendance.show',$attendance->id) }}"><i
+                                                                class="mdi mdi-eye-off mdi-24px"
+                                                                style="color:#00008B;"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach

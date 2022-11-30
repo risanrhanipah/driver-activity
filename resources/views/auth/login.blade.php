@@ -36,7 +36,6 @@
 
                                     <div class="row mb-4">
                                         <label for="password" class="col-md-4 col-form-label text-md-end"></label>
-
                                         <div class="col-md-12">
                                             <input id="password" type="password"
                                                 class="form-control @error('password') is-invalid @enderror"
@@ -50,32 +49,17 @@
                                             @enderror
                                         </div>
                                     </div>
-
-                                    <div class="row mb-4">
-                                        <div class="col-md-12">
-                                            <button type=" submit" class="btn btn-primary col-md-12">
-                                                {{ __('Login') }}
-                                            </button>
+                                    <div class="mb-4">
+                                        <div class="row mb-4">
+                                            <div class="col-md-12">
+                                                <button type=" submit" class="btn btn-primary col-md-12">
+                                                    {{ __('Sign in') }}
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
-
-                                    <div class="my-2 d-flex justify-content-between align-items-center">
-                                        <div class="form-check">
-                                            <label class="form-check-label text-muted" for="remember">
-                                                <input type="checkbox" name="remember"
-                                                    {{ old('remember') ? 'checked' : '' }}>
-                                                Remember Me</input>
-                                            </label>
+                                        <div class="text-center mt-4 font-weight-light">
+                                            Don't have an account? <a href="register" class="text-primary">Sign up</a>
                                         </div>
-                                        <div class="my-2 d-flex justify-content-between align-items-center">
-                                            Don't have an account? <a href="register" class="text-primary"> Create</a>
-                                        </div>
-                                        <!-- @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}"
-                                            class="text-primary">
-                                            Forgot Your Password?
-                                        </a>
-                                        @endif -->
                                     </div>
 
                                 </form>

@@ -49,7 +49,7 @@ class PengajuanSPJController extends Controller
 
         PengajuanSPJ::create($request->all());
 
-        return redirect()->route('pengajuan_spj.index')->with('created successfully');
+        return redirect()->route('pengajuan_spj.show')->with('created successfully');
     }
 
     /**

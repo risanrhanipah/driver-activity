@@ -209,7 +209,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="pull-right">
-                                                <a href="{{ route('pengajuan_spj.index') }}"><i
+                                                <a href="{{ route('pengajuan_spj.show') }}"><i
                                                         class="mdi mdi-arrow-left-bold-circle mdi-24px"
                                                         style="color:#00008B; text-align:right;"></i></a>
                                             </div>

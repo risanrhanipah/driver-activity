@@ -14,14 +14,25 @@
                 <span class="menu-title">Attendance</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('pengajuan_spj.create') }}">
+                <i class="icon-columns menu-icon"></i>
+                <span class="menu-title">Pengajuan SPJ</span>
+            </a>
+        </li>
         @else
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('attendance.index') }}">
+                <i class="icon-head menu-icon"></i>
+                <span class="menu-title">Employee</span>
+            </a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('attendance.index') }}">
                 <i class="icon-grid-2 menu-icon"></i>
                 <span class="menu-title">Attendance</span>
             </a>
         </li>
-
         <li class="nav-item">
             <a class="nav-link" href="{{ route('pengajuan_spj.index') }}">
                 <i class="icon-columns menu-icon"></i>
@@ -42,7 +53,6 @@
                 </ul>
             </div>
         </li>
-
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                 <i class="icon-head menu-icon"></i>

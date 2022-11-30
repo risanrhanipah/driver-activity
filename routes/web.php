@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PengajuanSPJController;
 use App\Models\PengajuanSPJ;
 use Illuminate\Support\Facades\App;
@@ -33,6 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/user', [LoginController::class, 'user'])->name('user');
     Route::resource('attendance', AttendanceController::class);
     Route::resource('pengajuan_spj', PengajuanSPJController::class);
+    Route::resource('employee', EmployeeController::class);
 });
 
 Auth::routes();
