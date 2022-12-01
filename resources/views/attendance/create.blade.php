@@ -33,14 +33,14 @@
                                         </div>
                                     </div>
                                     @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
+                                        <div class="alert alert-danger">
+                                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
                                     @endif
 
                                     <form class="form-sample" action="{{ route('attendance.store') }}" method="POST">
@@ -49,119 +49,34 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Nama</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="name" class="form-control"
-                                                            placeholder="Name" value="{{auth()->user()->name}}">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Tanggal</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="date" name="date" class="form-control"
-                                                            placeholder="Date">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">In</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="time" name="in" class="form-control"
-                                                            placeholder="In">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Out</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="time" name="out" class="form-control"
-                                                            placeholder="Out">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Start</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="time" name="start" class="form-control"
-                                                            placeholder="Start">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Finish</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="time" name="finish" class="form-control"
-                                                            placeholder="Finish">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Jumlah OT</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="jumlah_ot" class="form-control"
-                                                            placeholder="Jumlah OT">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Kolometer</label>
+                                                    <label class="col-sm-3 col-form-label">Kilometer</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="km" class="form-control"
                                                             placeholder="Kilometer">
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            {{-- <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Signature</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="signature" class="form-control"
-                                                            placeholder="Signature">
-                                                    </div>
-                                                </div>
-                                            </div> --}}
+
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Pemakaian</label>
+                                                    <label class="col-sm-3 col-form-label">Status</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="usage" class="form-control"
-                                                            placeholder="Pemakaian">
+                                                        <select name="status" class="form-control" id="">
+                                                            <option value="in">C / In</option>
+                                                            <option value="out">C / Out</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
+
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Progress</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="progress" class="form-control"
-                                                            placeholder="Progress">
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="col-md-6">
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Keterangan</label>
                                                     <div class="col-sm-9">
-                                                        <textarea type="text" name="ket" class="form-control"
-                                                            placeholder="Keterangan"></textarea>
+                                                        <textarea type="text" name="ket" class="form-control" placeholder="Keterangan"></textarea>
                                                     </div>
                                                 </div>
                                             </div>

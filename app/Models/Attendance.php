@@ -11,18 +11,16 @@ class Attendance extends Model
 
     protected $table = 'attendance';
     protected $fillable = [
-        'profile',
         'user_id',
-        'name',
-        'date',
-        'in',
-        'out',
-        'start',
-        'finish',
+        'date_in',
+        'date_out',
+        'start_ot',
+        'finish_ot',
         'jumlah_ot',
-        'km',
+        'km_in',
+        'km_out',
+        'km_out',
         'usage',
-        'progress',
         'ket'
     ];
 

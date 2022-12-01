@@ -17,6 +17,7 @@ class EmployeeSeeder extends Seeder
         $employee = [
             [
                 'user_id' => 2,
+                'nik' => '123123687618263',
                 'born_city' => 'Garut',
                 'birthday' => '25/10/2003',
                 'gender' => 'Perempuan',

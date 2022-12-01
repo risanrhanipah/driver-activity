@@ -16,17 +16,13 @@ class AttandenceSeeder extends Seeder
     {
         $attendance = [
             [
-                'date' => '01/12/2022',
                 'user_id' => 2,
-                'in' => '07:00',
-                'out' => '16:00',
-                'start' => '09:00',
-                'finish' => '14:00',
-                'jumlah_ot' => '98',
-                'km' => '200km',
-                'usage' => '10',
-                'progress' => '100%',
+                'date' => '2022/11/01 07:00:00',
+                'km' => 200,
+                'usage' => 10,
+                'progress' => 100,
                 'ket' => 'Done',
+                'status' => 'in',
             ],
         ];
 

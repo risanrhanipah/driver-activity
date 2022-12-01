@@ -22,7 +22,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <br>
-                                    <h4 class="card-title">Attendance</h4>
+                                    <h4 class="card-title"> List Attendance </h4>
                                     @if (auth()->user()->role == 'user')
                                         <div class="pull-right">
                                             <a href="{{ route('attendance.create') }}"><i
@@ -30,7 +30,6 @@
                                                     style="color:#00008B;"></i></a>
                                         </div>
                                     @endif
-
                                     @if ($message = Session::get('success'))
                                         <div class="alert alert-success">
                                             <p>{{ $message }}</p>
@@ -43,32 +42,32 @@
                                             <thead>
                                                 <tr style="text-align:center;">
                                                     <th>No</th>
-                                                    <th>Profile</th>
                                                     <th>Name</th>
-                                                    <th>Jabatan</th>
-                                                    <th>Penempatan</th>
-                                                    <th>total Absen</th>
-                                                    <th>Action</th>
+                                                    <th>Tanggal (IN)</th>
+                                                    <th>Tanggal (OUT)</th>
+                                                    <th>Kilometer (IN)</th>
+                                                    <th>Kilometer (OUT)</th>
+                                                    <th>Pemakaian</th>
+                                                    <th>Start OT</th>
+                                                    <th>Finish OT</th>
+                                                    <th>Jumlah OT</th>
+                                                    <th>Keterangan</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($attendances as $attendance)
-                                                    <tr style="text-align:center;">
+                                                    <tr>
                                                         <td>{{ ++$i }}</td>
-                                                        <td>
-                                                            <img src="../assets/images/faces/employee.png"
-                                                                alt="{{ $attendance->profile }}" />
-                                                            </img>
-                                                        </td>
-                                                        <td>{{ $attendance->name }}</td>
-                                                        <td>{{ $attendance->employee->position }}</td>
-                                                        <td>{{ $attendance->employee->sites }}</td>
-                                                        <td>{{ $attendance->attendance->count() }}</td>
-                                                        <td>
-                                                            <a href="{{ route('attendance.show', $attendance->id) }}"><i
-                                                                    class="mdi mdi-eye-off mdi-24px"
-                                                                    style="color:#00008B;"></i></a>
-                                                        </td>
+                                                        <td>{{ $attendance->user->name }}</td>
+                                                        <td>{{ $attendance->date_in }}</td>
+                                                        <td>{{ $attendance->date_out }}</td>
+                                                        <td>{{ $attendance->km_in }}</td>
+                                                        <td>{{ $attendance->km_out }}</td>
+                                                        <td>{{ $attendance->usage }}</td>
+                                                        <td>{{ $attendance->start_ot }}</td>
+                                                        <td>{{ $attendance->finish_ot }}</td>
+                                                        <td>{{ $attendance->jumlah_ot }}</td>
+                                                        <td>{{ $attendance->ket }}</td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -92,8 +91,10 @@
     <!-- plugins:js -->
     <!-- endinject -->
     <!-- Custom js for this page-->
-    <!-- End custom js f   or this page-->
+    <!-- End custom js for this page-->
 </body>
 @include('template.plugin')
 
 </html>
+
+{!! $attendances->links() !!}

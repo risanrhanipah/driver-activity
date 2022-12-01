@@ -29,9 +29,9 @@
                                                 style="color:#00008B; text-align:right;"></i></a>
                                     </div>
                                     @if ($message = Session::get('success'))
-                                    <div class="alert alert-success">
-                                        <p>{{ $message }}</p>
-                                    </div>
+                                        <div class="alert alert-success">
+                                            <p>{{ $message }}</p>
+                                        </div>
                                     @endif
 
                                     <br>
@@ -57,43 +57,45 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($attendances as $attendance)
-                                                <tr style="text-align:center;">
-                                                    <td>{{ ++$i }}</td>
-                                                    <td>
-                                                        <img src="../assets/images/faces/employee.png"
-                                                            alt="{{ $attendance->profile}}" />
-                                                        </img>
-                                                    </td>
-                                                    <td>{{ $attendance->user->name }}</td>
-                                                    <td>{{ $attendance->date }}</td>
-                                                    <td>{{ $attendance->in }}</td>
-                                                    <td>{{ $attendance->out }}</td>
-                                                    <td>{{ $attendance->start }}</td>
-                                                    <td>{{ $attendance->finish }}</td>
-                                                    <td>{{ $attendance->jumlah_ot }}</td>
-                                                    <td>{{ $attendance->km }}</td>
-                                                    <td>{{ $attendance->usage }}</td>
-                                                    <td>{{ $attendance->progress}}</td>
-                                                    <td>{{ $attendance->ket }}</td>
-                                                    <td>
-                                                        <form action="{{ route('attendance.destroy',$attendance->id) }}"
-                                                            method="POST">
+                                                    <tr style="text-align:center;">
+                                                        <td>{{ ++$i }}</td>
+                                                        <td>
+                                                            <img src="../assets/images/faces/employee.png"
+                                                                alt="{{ $attendance->profile }}" />
+                                                            </img>
+                                                        </td>
+                                                        <td>{{ $attendance->user->name }}</td>
+                                                        <td>{{ $attendance->date }}</td>
+                                                        <td>{{ $attendance->in }}</td>
+                                                        <td>{{ $attendance->out }}</td>
+                                                        <td>{{ $attendance->start }}</td>
+                                                        <td>{{ $attendance->finish }}</td>
+                                                        <td>{{ $attendance->jumlah_ot }}</td>
+                                                        <td>{{ $attendance->km }}</td>
+                                                        <td>{{ $attendance->usage }}</td>
+                                                        <td>{{ $attendance->progress }}</td>
+                                                        <td>{{ $attendance->ket }}</td>
+                                                        <td>
+                                                            <form
+                                                                action="{{ route('attendance.destroy', $attendance->id) }}"
+                                                                method="POST">
 
-                                                            <a href=" {{ route('attendance.edit',$attendance->id) }}"><i
-                                                                    class="mdi mdi-account-edit mdi-24px"
-                                                                    style="color:#F1C40F;"></i></a>
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit"
-                                                                style="border:0; background-color:transparent">
-                                                                <a class="mdi mdi-delete-empty mdi-24px"
-                                                                    style="color:#D11010;"
-                                                                    onclick="return confirm('Are you sure?')"></a>
-                                                            </button>
-                                                        </form>
-                                                    </td>
+                                                                <a
+                                                                    href=" {{ route('attendance.edit', $attendance->id) }}"><i
+                                                                        class="mdi mdi-account-edit mdi-24px"
+                                                                        style="color:#F1C40F;"></i></a>
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit"
+                                                                    style="border:0; background-color:transparent">
+                                                                    <a class="mdi mdi-delete-empty mdi-24px"
+                                                                        style="color:#D11010;"
+                                                                        onclick="return confirm('Are you sure?')"></a>
+                                                                </button>
+                                                            </form>
+                                                        </td>
 
-                                                </tr>
+                                                    </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
