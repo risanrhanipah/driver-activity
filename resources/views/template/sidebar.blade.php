@@ -9,7 +9,7 @@
 
         @if (auth()->user()->role == 'user')
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('attendance.create') }}">
+            <a class="nav-link" href="{{ route('attendance.index') }}">
                 <i class="icon-grid-2 menu-icon"></i>
                 <span class="menu-title">Attendance</span>
             </a>
@@ -20,9 +20,15 @@
                 <span class="menu-title">Pengajuan SPJ</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('employee.create') }}">
+                <i class="icon-head menu-icon"></i>
+                <span class="menu-title">Employee</span>
+            </a>
+        </li>
         @else
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('attendance.index') }}">
+            <a class="nav-link" href="{{ route('employee.index') }}">
                 <i class="icon-head menu-icon"></i>
                 <span class="menu-title">Employee</span>
             </a>

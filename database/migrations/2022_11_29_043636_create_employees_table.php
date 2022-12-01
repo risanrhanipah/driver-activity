@@ -15,8 +15,8 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('photo');
-            $table->string('name');
+            $table->string('nik');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('born_city');
             $table->date('birthday');
             $table->string('gender');
@@ -24,8 +24,7 @@ class CreateEmployeesTable extends Migration
             $table->string('religion');
             $table->string('position');
             $table->string('sites');
-            $table->integer('phone_number');
-            $table->string('email');
+            $table->string('phone_number');
             $table->timestamps();
         });
     }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PengajuanSPJ;
+use App\Models\SPJ;
 use Illuminate\Http\Request;
 
 class PengajuanSPJController extends Controller
@@ -14,7 +14,7 @@ class PengajuanSPJController extends Controller
      */
     public function index()
     {
-        $pengajuan_spj = PengajuanSPJ::latest()->paginate(5);
+        $pengajuan_spj = SPJ::latest()->paginate(5);
 
         return view('spj.index', compact('pengajuan_spj'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -27,7 +27,7 @@ class PengajuanSPJController extends Controller
      */
     public function create()
     {
-        $pengajuan_spj = PengajuanSPJ::latest()->paginate(5);
+        $pengajuan_spj = SPJ::latest()->paginate(5);
         return view('spj.create', compact('pengajuan_spj'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -47,7 +47,7 @@ class PengajuanSPJController extends Controller
             'ket' => 'required',
         ]);
 
-        PengajuanSPJ::create($request->all());
+        SPJ::create($request->all());
 
         return redirect()->route('pengajuan_spj.show')->with('created successfully');
     }
@@ -55,12 +55,12 @@ class PengajuanSPJController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\PengajuanSPJ  $pengajuanSPJ
+     * @param  \App\Models\SPJ  $pengajuanSPJ
      * @return \Illuminate\Http\Response
      */
-    public function show(PengajuanSPJ $pengajuanSPJ)
+    public function show(SPJ $pengajuanSPJ)
     {
-        $pengajuan_spj = PengajuanSPJ::latest()->paginate(5);
+        $pengajuan_spj = SPJ::latest()->paginate(5);
         return view('spj.show', compact('pengajuan_spj'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -68,10 +68,10 @@ class PengajuanSPJController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\PengajuanSPJ  $pengajuanSPJ
+     * @param  \App\Models\SPJ  $pengajuanSPJ
      * @return \Illuminate\Http\Response
      */
-    public function edit(PengajuanSPJ $pengajuanSPJ)
+    public function edit(SPJ $pengajuanSPJ)
     {
         return view('spj.edit', compact('pengajuan_spj'));
     }
@@ -80,10 +80,10 @@ class PengajuanSPJController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PengajuanSPJ  $pengajuanSPJ
+     * @param  \App\Models\SPJ  $pengajuanSPJ
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PengajuanSPJ $pengajuanSPJ)
+    public function update(Request $request, SPJ $pengajuanSPJ)
     {
         $request->validate([
             'name' => 'required',
@@ -100,10 +100,10 @@ class PengajuanSPJController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\PengajuanSPJ  $pengajuanSPJ
+     * @param  \App\Models\SPJ  $pengajuanSPJ
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PengajuanSPJ $pengajuanSPJ)
+    public function destroy(SPJ $pengajuanSPJ)
     {
         $pengajuanSPJ->delete();
 

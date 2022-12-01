@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PengajuanSPJ extends Model
+class SPJ extends Model
 {
     use HasFactory;
 
-    protected $table = 'pengajuan_spj';
+    protected $table = 'spj';
     protected $fillable = [
-        'name',
-        'date_pengajuan',
-        'spj',
-        'ket'
+        'user_id',
+        'date_start',
+        'date_end',
+        'project',
+        'description'
     ];
 }

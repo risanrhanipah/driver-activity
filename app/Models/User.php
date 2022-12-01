@@ -40,6 +40,11 @@ class User extends Authenticatable
 
     public function attendance()
     {
-        return $this->belongsTo(Attendance::class);
+        return $this->hasMany(Attendance::class);
+    }
+
+    public function employee()
+    {
+        return $this->hasOne(Employee::class);
     }
 }

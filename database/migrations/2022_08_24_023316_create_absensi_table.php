@@ -15,19 +15,16 @@ class CreateAbsensiTable extends Migration
     {
         Schema::create('attendance', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->date('date');
-            $table->time('in');
-            $table->time('out');
-            $table->time('start');
-            $table->time('finish');
-            $table->integer('jumlah_ot');
-            $table->text('signature');
+            $table->unsignedBigInteger('user_id');
+            $table->datetime('date');
             $table->string('km');
             $table->string('usage');
             $table->string('progress');
             $table->text('ket');
+            $table->string('status');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

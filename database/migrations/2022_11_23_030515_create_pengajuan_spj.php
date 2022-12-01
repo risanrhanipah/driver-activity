@@ -13,13 +13,16 @@ class CreatePengajuanSpj extends Migration
      */
     public function up()
     {
-        Schema::create('pengajuan_spj', function (Blueprint $table) {
+        Schema::create('spj', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->date('date_pengajuan');
-            $table->string('spj');
-            $table->string('ket');
+            $table->unsignedBigInteger('user_id');
+            $table->date('date_start');
+            $table->date('date_end');
+            $table->string('project');
+            $table->string('description');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

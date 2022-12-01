@@ -232,19 +232,19 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Photo</label>
+                                                    <label class="col-sm-3 col-form-label">Nama</label>
                                                     <div class="col-sm-9">
-                                                        <input type="file" name="photo" class="form-control"
-                                                            placeholder="Photo">
+                                                        <input type="text" name="name" class="form-control"
+                                                            placeholder="Name">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Nama</label>
+                                                    <label class="col-sm-3 col-form-label">NIK</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="name" class="form-control"
-                                                            placeholder="Name">
+                                                        <input type="text" name="nik" class="form-control"
+                                                            placeholder="NIK">
                                                     </div>
                                                 </div>
                                             </div>
@@ -263,7 +263,7 @@
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Tanggal Lahir</label>
                                                     <div class="col-sm-9">
-                                                        <input type="date " name="birthday" class="form-control"
+                                                        <input type="date" name="birthday" class="form-control"
                                                             placeholder="Tanggal Lahir">
                                                     </div>
                                                 </div>
@@ -274,8 +274,11 @@
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Jenis Kelamin</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="gender" class="form-control"
+                                                        <select class="form-control" name="gender"
                                                             placeholder="Jenis Kelamin">
+                                                            <option value="Perempuan">Perempuan</option>
+                                                            <option value="Laki-laki">Laki-laki</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -283,8 +286,8 @@
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Alamat</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="address" class="form-control"
-                                                            placeholder="Alamat">
+                                                        <textarea type="text" name="address" class="form-control"
+                                                            placeholder="Alamat"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -294,8 +297,15 @@
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Agama</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="religion" class="form-control"
+                                                        <select class="form-control" name="religion"
                                                             placeholder="Agama">
+                                                            <option value="Islam">Islam</option>
+                                                            <option value="Kristen Protestan">Kristen Protestan</option>
+                                                            <option value="Katolik">Katolik</option>
+                                                            <option value="Hindu">Hindu</option>
+                                                            <option value="Buddha">Buddha</option>
+                                                            <option value="Konghucu">Konghucu</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -334,8 +344,17 @@
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Email</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="email" class="form-control"
+                                                        <input type="email" name="email" class="form-control"
                                                             placeholder="Email">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Password</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="password" name="password" class="form-control"
+                                                            placeholder="Password">
                                                     </div>
                                                 </div>
                                             </div>

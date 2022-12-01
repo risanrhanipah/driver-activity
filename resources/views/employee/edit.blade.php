@@ -209,7 +209,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="pull-right">
-                                                <a href="{{ route('attendance.index') }}"><i
+                                                <a href="{{ route('employee.index') }}"><i
                                                         class="mdi mdi-arrow-left-bold-circle mdi-24px"
                                                         style="color:#00008B; text-align:right;"></i></a>
                                             </div>
@@ -226,26 +226,28 @@
                                     </div>
                                     @endif
 
-                                    <form action="{{ route('attendance.update',$attendance->id) }}" method="POST">
+                                    <form action="{{ route('employee.update',$employee->user_id) }}" method="POST">
                                         @csrf
                                         @method('PUT')
                                         <br>
+                                        <input type="hidden" name="user_id" value="{{ $employee->user_id }}">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Nama</label>
+                                                    <label class="col-sm-3 col-form-label">Name</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="name" value="{{ $attendance->name }}"
-                                                            class="form-control" placeholder="Name">
+                                                        <input type="text" name="name"
+                                                            value="{{ $employee->user->name }}" class="form-control"
+                                                            placeholder="Nama">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Tanggal</label>
+                                                    <label class="col-sm-3 col-form-label">NIK</label>
                                                     <div class="col-sm-9">
-                                                        <input type="date" name="date" value="{{ $attendance->date }}"
-                                                            class="form-control" placeholder="Date">
+                                                        <input type="text" name="nik" value="{{ $employee->nik }}"
+                                                            class="form-control" placeholder="NIK">
                                                     </div>
                                                 </div>
                                             </div>
@@ -253,40 +255,21 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">In</label>
+                                                    <label class="col-sm-3 col-form-label">Tempat Lahir</label>
                                                     <div class="col-sm-9">
-                                                        <input type="time" name="in" value="{{ $attendance->in }}"
-                                                            class="form-control" placeholder="In">
+                                                        <input type="text" name="born_city"
+                                                            value="{{ $employee->born_city }}" class="form-control"
+                                                            placeholder="Tempat Lahir">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Out</label>
+                                                    <label class="col-sm-3 col-form-label">Tanggal Lahir</label>
                                                     <div class="col-sm-9">
-                                                        <input type="time" name="out" value="{{ $attendance->out }}"
-                                                            class="form-control" placeholder="Out">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Start</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="time" name="start" value="{{ $attendance->start }}"
-                                                            class="form-control" placeholder="Start">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Finish</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="time" name="finish"
-                                                            value="{{ $attendance->finish }}" class="form-control"
-                                                            placeholder="Finish">
+                                                        <input type="date" name="birthday"
+                                                            value="{{ $employee->birthday }}" class="form-control"
+                                                            placeholder="Tanggal Lahir">
                                                     </div>
                                                 </div>
                                             </div>
@@ -294,41 +277,25 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Jumlah OT</label>
+                                                    <label class="col-sm-3 col-form-label">Jenis Kelamin</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="jumlah_ot"
-                                                            value="{{ $attendance->jumlah_ot }}" class="form-control"
-                                                            placeholder="Jumlah OT">
+                                                        <select class="form-control" name="gender"
+                                                            value="{{ $employee->gender }}" placeholder="Jenis Kelamin">
+                                                            <option value="Perempuan" @if ($employee->gender =
+                                                                "Perempuan") selected @endif>Perempuan</option>
+                                                            <option value="Laki-laki" @if ($employee->gender =
+                                                                "Laki-laki") selected @endif>Laki-laki</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Kolometer</label>
+                                                    <label class="col-sm-3 col-form-label">Alamat</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="km" value="{{ $attendance->km }}"
-                                                            class="form-control" placeholder="Kilometer">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Signature</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="signature"
-                                                            value="{{ $attendance->signature }}" class="form-control"
-                                                            placeholder="Signature">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Pemakaian</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="usage" value="{{ $attendance->usage }}"
-                                                            class="form-control" placeholder="Pemakaian">
+                                                        <input type="text" name="address"
+                                                            value="{{ $employee->address }}" class="form-control"
+                                                            placeholder="Alamat">
                                                     </div>
                                                 </div>
                                             </div>
@@ -336,21 +303,73 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Progress</label>
+                                                    <label class="col-sm-3 col-form-label">Agama</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="progress"
-                                                            value="{{ $attendance->progress }}" class="form-control"
-                                                            placeholder="Progress">
+                                                        <select class="form-control" name="religion"
+                                                            value="{{ $employee->religion }}" placeholder="Agama">
+                                                            <option>Islam</option>
+                                                            <option>Kristen Protestan</option>
+                                                            <option>Katolik</option>
+                                                            <option>Hindu</option>
+                                                            <option>Buddha</option>
+                                                            <option>Konghucu</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Keterangan</label>
+                                                    <label class="col-sm-3 col-form-label">Jabatan</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="ket" value="{{ $attendance->ket }}"
-                                                            class="form-control" placeholder="Keterangan">
+                                                        <input type="text" name="position"
+                                                            value="{{ $employee->position }}" class="form-control"
+                                                            placeholder="Jabatan">
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Penempatan</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="sites" value="{{ $employee->sites }}"
+                                                            class="form-control" placeholder="Penempatan">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Nomor Telpon</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="phone_number"
+                                                            value="{{ $employee->phone_number }}" class="form-control"
+                                                            placeholder="Nomor Telpon">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Email</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="email" name="email"
+                                                            value="{{ $employee->user->email }}" class="form-control"
+                                                            placeholder="Email">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Password</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="password" name="password" value=""
+                                                            class="form-control" placeholder="Password"
+                                                            autocomplete="new-password">
+                                                    </div>
+                                                    <small>* Isi field ini untuk mengganti password</small>
+
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12 text-right">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -14,7 +15,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::latest()->paginate(5);
+        $employees = Employee::with('user')->latest()->paginate(5);
 
         return view('employee.index', compact('employees'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -41,7 +42,7 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'photo' => 'required',
+            'nik' => 'required',
             'name' => 'required',
             'born_city' => 'required',
             'birthday' => 'required',
@@ -54,7 +55,25 @@ class EmployeeController extends Controller
             'email' => 'required'
         ]);
 
-        Employee::create($request->all());
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role' => 'user',
+        ]);
+
+        Employee::create([
+            'nik' => $request->nik,
+            'born_city' => $request->born_city,
+            'birthday' => $request->birthday,
+            'gender' => $request->gender,
+            'address' => $request->address,
+            'religion' => $request->religion,
+            'position' => $request->position,
+            'sites' => $request->sites,
+            'phone_number' => $request->phone_number,
+            'user_id' => $user->id,
+        ]);
 
         return redirect()->route('employee.index')->with('created successfully');
     }
@@ -90,10 +109,11 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(Request $request, Employee $emp)
     {
         $request->validate([
-            'photo' => 'required',
+            'user_id' => 'required',
+            'nik' => 'required',
             'name' => 'required',
             'born_city' => 'required',
             'birthday' => 'required',
@@ -106,7 +126,31 @@ class EmployeeController extends Controller
             'email' => 'required'
         ]);
 
-        $employee->update($request->all());
+        $user = User::find($request->user_id);
+
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['role'] = 'user';
+
+        if ($request->password != "") {
+            $data['password'] = bcrypt($request->password);
+        }
+
+        $user->update($data);
+
+        $employee = Employee::where('user_id', $request->user_id);
+        $employee->update([
+            'nik' => $request->nik,
+            'born_city' => $request->born_city,
+            'birthday' => $request->birthday,
+            'gender' => $request->gender,
+            'address' => $request->address,
+            'religion' => $request->religion,
+            'position' => $request->position,
+            'sites' => $request->sites,
+            'phone_number' => $request->phone_number,
+            'user_id' => $user->id,
+        ]);
 
         return redirect()->route('employee.index')->with('updated successfully');
     }
@@ -119,7 +163,7 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        $employee->delete();
+        $employee->user->delete();
 
         return redirect()->route('employee.index')->with('deleted successfully');
     }

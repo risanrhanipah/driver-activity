@@ -168,7 +168,7 @@
                                 <div class="info">
                                     <p>James Richardson</p>
                                     <p>Away</p>
-                                </div>
+                                </div>1
                                 <small class="text-muted my-auto">2 min</small>
                             </li>
                             <li class="list">
@@ -222,45 +222,47 @@
                                     <div class="table-responsive">
                                         <table id="datatable" class="table table-striped" style="width:100%">
                                             <thead>
-                                                <tr style="text-align:center;">
+                                                <tr>
                                                     <th>No</th>
                                                     <th>Profile</th>
+                                                    <th>NIK</th>
                                                     <th>Name</th>
-                                                    <th>Tempat Lahir</th>
-                                                    <th>Tanggal Lahir</th>
-                                                    <th>Jenis Kelamin</th>
-                                                    <th>Alamat</th>
-                                                    <th>Agama</th>
-                                                    <th>Jabatan</th>
-                                                    <th>Penempatan</th>
-                                                    <th>Nomor Telpon</th>
                                                     <th>Email</th>
                                                     <th width="100px">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($employees as $employee)
-                                                <tr style="text-align:center;">
+                                                <tr>
                                                     <td>{{ ++$i }}</td>
                                                     <td>
                                                         <img src="../assets/images/faces/employee.png"
                                                             alt="{{ $employee->profile}}" />
                                                         </img>
                                                     </td>
-                                                    <td>{{ $employee->name }}</td>
-                                                    <td>{{ $employee->born_city }}</td>
-                                                    <td>{{ $employee->birthday }}</td>
-                                                    <td>{{ $employee->gender }}</td>
-                                                    <td>{{ $employee->address }}</td>
-                                                    <td>{{ $employee->religion }}</td>
-                                                    <td>{{ $employee->position }}</td>
-                                                    <td>{{ $employee->sites }}</td>
-                                                    <td>{{ $employee->phone_number }}</td>
-                                                    <td>{{ $employee->email }}</td>
+                                                    <td>{{ $employee->nik }}</td>
+                                                    <td>{{ $employee->user->name }}</td>
+                                                    <td>{{ $employee->user->email }}</td>
                                                     <td>
-                                                        <a href="{{ route('employee.show',$employee->id) }}"><i
-                                                                class="mdi mdi-eye-off mdi-24px"
-                                                                style="color:#00008B;"></i></a>
+                                                        <form action="{{ route('employee.destroy',$employee->id) }}"
+                                                            method="POST">
+
+                                                            <a href="{{ route('employee.show',$employee->id) }}"><i
+                                                                    class="mdi mdi-eye-off mdi-24px"
+                                                                    style="color:#00008B;"></i></a>
+
+                                                            <a href=" {{ route('employee.edit',$employee->id) }}"><i
+                                                                    class="mdi mdi-account-edit mdi-24px"
+                                                                    style="color:#F1C40F;"></i></a>
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit"
+                                                                style="border:0; background-color:transparent">
+                                                                <a class="mdi mdi-delete-empty mdi-24px"
+                                                                    style="color:#D11010;"
+                                                                    onclick="return confirm('Are you sure?')"></a>
+                                                            </button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                                 @endforeach
