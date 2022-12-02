@@ -10,98 +10,96 @@
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- partial:../../partials/_settings-panel.html -->
-
             <!-- partial -->
             <!-- partial:../../partials/_sidebar.html -->
             @include('template.sidebar')
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    <div class="row">
-                        <div class="col-lg-12 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <br>
-                                    <h4 class="card-title"> List Employee</h4>
-                                    <div class="pull-right">
-                                        <a href="{{ route('employee.index') }}"><i
-                                                class="mdi mdi-arrow-left-bold-circle mdi-24px"
-                                                style="color:#00008B; text-align:right;"></i></a>
-                                    </div>
-                                    @if ($message = Session::get('success'))
-                                    <div class="alert alert-success">
-                                        <p>{{ $message }}</p>
-                                    </div>
-                                    @endif
+                    <section class="vh-100" style="background-color: #f4f5f7;">
+                        <div class="container py-2 h-400">
+                            <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col col-lg-12 mb-2 mb-lg-0">
+                                    <div class="card mb-3" style="border-radius: .5rem;">
+                                        @foreach ($employees as $employee)
+                                        <div class="row g-0">
+                                            <div class="col-md-4 gradient-custom text-center text-white"
+                                                style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                                                    alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+                                                <h5>Marie Horwitz</h5>
+                                                <p>Web Designer</p>
+                                                <i class="far fa-edit mb-5"></i>
+                                            </div>
 
-                                    <br>
-                                    <div class="table-responsive">
-                                        <table id="datatable" class="table table-striped" style="width:100%">
-                                            <thead>
-                                                <tr style="text-align:center;">
-                                                    <th>No</th>
-                                                    <th>Profile</th>
-                                                    <th>NIK</th>
-                                                    <th>Name</th>
-                                                    <th>Tempat Lahir</th>
-                                                    <th>Tanggal Lahir</th>
-                                                    <th>Jenis Kelamin</th>
-                                                    <th>Alamat</th>
-                                                    <th>Agama</th>
-                                                    <th>Jabatan</th>
-                                                    <th>Penempatan</th>
-                                                    <th>Nomor Telpon</th>
-                                                    <th>Email</th>
-                                                    <th width="280px">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($employees as $employee)
-                                                <tr style="text-align:center;">
-                                                    <td>{{ ++$i }}</td>
-                                                    <td>
-                                                        <img src="../assets/images/faces/employee.png"
-                                                            alt="{{ $employee->profile}}" />
-                                                        </img>
-                                                    </td>
-                                                    <td>{{ $employee->nik }}</td>
-                                                    <td>{{ $employee->user->name }}</td>
-                                                    <td>{{ $employee->born_city }}</td>
-                                                    <td>{{ $employee->birthday }}</td>
-                                                    <td>{{ $employee->gender }}</td>
-                                                    <td>{{ $employee->address }}</td>
-                                                    <td>{{ $employee->religion }}</td>
-                                                    <td>{{ $employee->position }}</td>
-                                                    <td>{{ $employee->sites }}</td>
-                                                    <td>{{ $employee->phone_number }}</td>
-                                                    <td>{{ $employee->email }}</td>
-                                                    <td>
-                                                        <form action="{{ route('employee.destroy',$employee->id) }}"
-                                                            method="POST">
-
-                                                            <a href=" {{ route('employee.edit',$employee->id) }}"><i
-                                                                    class="mdi mdi-account-edit mdi-24px"
-                                                                    style="color:#F1C40F;"></i></a>
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit"
-                                                                style="border:0; background-color:transparent">
-                                                                <a class="mdi mdi-delete-empty mdi-24px"
-                                                                    style="color:#D11010;"
-                                                                    onclick="return confirm('Are you sure?')"></a>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-
-                                                </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
+                                            <div class="col-md-8">
+                                                <div class="card-body p-4">
+                                                    <h6>Information</h6>
+                                                    <hr class="mt-0 mb-4">
+                                                    <div class="row pt-1">
+                                                        <div class="col-6 mb-3">
+                                                            <h6>NIK</h6>
+                                                            <p class="text-muted">{{ $employee->nik }}</p>
+                                                        </div>
+                                                        <div class="col-6 mb-3">
+                                                            <h6>Nama</h6>
+                                                            <p class="text-muted">{{ $employee->user->name}}</p>
+                                                        </div>
+                                                        <div class="col-6 mb-3">
+                                                            <h6>Tempat Lahir</h6>
+                                                            <p class="text-muted">{{ $employee->born_city}}</p>
+                                                        </div>
+                                                        <div class="col-6 mb-3">
+                                                            <h6>Tanggal Lahir</h6>
+                                                            <p class="text-muted">{{ $employee->birthday}}</p>
+                                                        </div>
+                                                        <div class="col-6 mb-3">
+                                                            <h6>Jenis Kelamin</h6>
+                                                            <p class="text-muted">{{ $employee->gender}}</p>
+                                                        </div>
+                                                        <div class="col-6 mb-3">
+                                                            <h6>Alamat</h6>
+                                                            <p class="text-muted">{{ $employee->address}}</p>
+                                                        </div>
+                                                        <div class="col-6 mb-3">
+                                                            <h6>Agama</h6>
+                                                            <p class="text-muted">{{ $employee->religion}}</p>
+                                                        </div>
+                                                        <div class="col-6 mb-3">
+                                                            <h6>Jabatan</h6>
+                                                            <p class="text-muted">{{ $employee->position}}</p>
+                                                        </div>
+                                                        <div class="col-6 mb-3">
+                                                            <h6>Penempatan</h6>
+                                                            <p class="text-muted">{{ $employee->sites}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <h6>Kontak</h6>
+                                                    <hr class="mt-0 mb-4">
+                                                    <div class="row pt-1">
+                                                        <div class="col-6 mb-3">
+                                                            <h6>Nomor Telpon</h6>
+                                                            <p class="text-muted">{{ $employee->phone_number }}</p>
+                                                        </div>
+                                                        <div class="col-6 mb-3">
+                                                            <h6>Email</h6>
+                                                            <p class="text-muted">{{ $employee->user->email }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex justify-content-start">
+                                                        <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
+                                                        <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
+                                                        <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </section>
                 </div>
                 <!-- content-wrapper ends -->
                 <!-- partial:../../partials/_footer.html -->

@@ -364,11 +364,13 @@
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Password</label>
                                                     <div class="col-sm-9">
+                                                        <small style="color:red;">* Isi field ini untuk mengganti
+                                                            password</small>
                                                         <input type="password" name="password" value=""
                                                             class="form-control" placeholder="Password"
                                                             autocomplete="new-password">
                                                     </div>
-                                                    <small>* Isi field ini untuk mengganti password</small>
+
 
                                                 </div>
                                             </div>

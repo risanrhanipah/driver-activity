@@ -86,7 +86,8 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        $employees = Employee::latest()->paginate(5);
+        $employees = Employee::with('user')->latest()->paginate(5);
+
         return view('employee.show', compact('employees'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
