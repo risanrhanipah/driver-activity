@@ -40,6 +40,8 @@ class PengajuanSPJController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd($request);
         $validasi = $request->validate([
             'start_date'    => 'required',
             'end_date'      => 'required',
@@ -57,19 +59,20 @@ class PengajuanSPJController extends Controller
 
         $nominal = 0;
         foreach ($request->keperluan as $detail) {
-            if ($detail->keperluan == 'Uang Makan') {
+            if ($detail == 'Uang Makan') {
                 $nominal = 45000;
-            } else if ($detail->keperluan == 'Uang Saku') {
+            } else if ($detail == 'Uang Saku') {
                 $nominal = 25000;
-            } else if ($detail->keperluan == 'Uang Penginapan') {
+            } else if ($detail == 'Uang Penginapan') {
                 $nominal = 50000;
             } else {
                 $nominal = $request->nominal;
+                $detail = $request->keperluan_other;
             }
 
             Detailspj::create([
                 'spj_id' => $spj->id,
-                'keperluan' => $detail->keperluan,
+                'keperluan' => $detail,
                 'nominal' => $nominal,
                 'jumlah' => $jarak,
                 'total' => intval($nominal) * intval($jarak)
@@ -77,5 +80,9 @@ class PengajuanSPJController extends Controller
         }
 
         return redirect()->route('pengajuan.spj')->with('created successfully');
+    }
+
+    public function show($id)
+    {
     }
 }

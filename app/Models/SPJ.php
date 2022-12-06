@@ -12,8 +12,8 @@ class SPJ extends Model
     protected $table = 'spj';
     protected $fillable = [
         'user_id',
-        'date_start',
-        'date_end',
+        'start_date',
+        'end_date',
         'project',
         'description'
     ];

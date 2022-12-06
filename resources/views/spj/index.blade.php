@@ -50,12 +50,12 @@
                                                     <th width="100px">Days Total</th>
                                                     <th width="100px">Project</th>
                                                     <th width="100px">Description</th>
-                                                    <th width="100px">Detail SPJ</th>
+                                                    <th width="100px">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($pengajuan_spj as $pengajuanspj)
-                                                <tr style="text-align:center;">
+                                                <tr>
                                                     <td>{{ ++$i }}</td>
                                                     <td>
                                                         <img src="../assets/images/faces/employee.png"
@@ -65,13 +65,17 @@
                                                     <td>{{ $pengajuanspj->user->name }}</td>
                                                     <td>{{ $pengajuanspj->start_date }}</td>
                                                     <td>{{ $pengajuanspj->end_date }}</td>
-                                                    <td>{{ $pengajuanspj->pengajuanspj->count()}}</td>
+                                                    <td>{{ (strtotime($pengajuanspj->end_date) - strtotime( $pengajuanspj->start_date)) / 60 /60 /24 }}
+                                                    </td>
                                                     <td>{{ $pengajuanspj->project }}</td>
                                                     <td>{{ $pengajuanspj->description }}</td>
                                                     <td>
                                                         <a href="{{ route('pengajuan_spj.show',$pengajuanspj->id) }}"><i
                                                                 class="mdi mdi-file-pdf mdi-24px"
                                                                 style="color:#00008B;"></i></a>
+                                                        <a href=" {{ route('pengajuan_spj.edit', $pengajuanspj->id) }}"><i
+                                                                class="mdi mdi-account-edit mdi-24px"
+                                                                style="color:#F1C40F;"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach

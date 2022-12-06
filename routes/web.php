@@ -37,6 +37,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/pengajuan_spj', [PengajuanSPJController::class, 'index'])->name('pengajuan.spj');
     Route::get('/pengajuan_spj/create', [PengajuanSPJController::class, 'create'])->name('pengajuan_spj.create');
     Route::post('/pengajuan_spj/create', [PengajuanSPJController::class, 'store'])->name('pengajuan_spj.store');
+    Route::get('/pengajuan_spj/show', [PengajuanSPJController::class, 'show'])->name('pengajuan_spj.show');
+    Route::get('/pengajuan_spj/edit', [PengajuanSPJController::class, 'edit'])->name('pengajuan_spj.edit');
 
     Route::resource('attendance', AttendanceController::class);
     Route::resource('employee', EmployeeController::class);
