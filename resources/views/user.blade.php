@@ -1,17 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
-<!DOCTYPE html>
-<html lang="en">
-<div class="card-body">
-    @if (session('status'))
-    <div class="alert alert-success" role="alert">
-        {{ session('status') }}
-    </div>
-    @endif
-</div>
 @include('template.head')
-@endsections
 
 <body>
     <div class="container-scroller">

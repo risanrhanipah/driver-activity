@@ -84,12 +84,11 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function show(Employee $employee)
+    public function show($id)
     {
-        $employees = Employee::with('user')->latest()->paginate(5);
+        $profile = Employee::with('user')->find($id);
 
-        return view('employee.show', compact('employees'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('employee.show', compact('profile'));
     }
 
     /**

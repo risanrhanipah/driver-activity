@@ -17,73 +17,71 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <section class="vh-100" style="background-color: #f4f5f7;">
-                        <div class="container py-2 h-400">
+                        <div class="container py-0 h-700">
                             <div class="row d-flex justify-content-center align-items-center h-100">
                                 <div class="col col-lg-12 mb-2 mb-lg-0">
                                     <div class="card mb-3" style="border-radius: .5rem;">
-                                        @foreach ($employees as $employee)
                                         <div class="row g-0">
                                             <div class="col-md-4 gradient-custom text-center text-white"
                                                 style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                                                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                                                    alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+                                                    alt="Avatar" class="img-fluid my-5" style="width: 150px;" />
                                                 <h5>Marie Horwitz</h5>
                                                 <p>Web Designer</p>
                                                 <i class="far fa-edit mb-5"></i>
                                             </div>
-
                                             <div class="col-md-8">
                                                 <div class="card-body p-4">
                                                     <h6>Information</h6>
                                                     <hr class="mt-0 mb-4">
                                                     <div class="row pt-1">
-                                                        <div class="col-6 mb-3">
+                                                        <div class="col-6">
                                                             <h6>NIK</h6>
-                                                            <p class="text-muted">{{ $employee->nik }}</p>
+                                                            <p class="text-muted">{{ $profile->nik }}</p>
                                                         </div>
-                                                        <div class="col-6 mb-3">
+                                                        <div class="col-6">
                                                             <h6>Nama</h6>
-                                                            <p class="text-muted">{{ $employee->user->name}}</p>
+                                                            <p class="text-muted">{{ $profile->user->name}}</p>
                                                         </div>
-                                                        <div class="col-6 mb-3">
+                                                        <div class="col-6 mb-0">
                                                             <h6>Tempat Lahir</h6>
-                                                            <p class="text-muted">{{ $employee->born_city}}</p>
+                                                            <p class="text-muted">{{ $profile->born_city}}</p>
                                                         </div>
-                                                        <div class="col-6 mb-3">
+                                                        <div class="col-6">
                                                             <h6>Tanggal Lahir</h6>
-                                                            <p class="text-muted">{{ $employee->birthday}}</p>
+                                                            <p class="text-muted">{{ $profile->birthday}}</p>
                                                         </div>
-                                                        <div class="col-6 mb-3">
+                                                        <div class="col-6">
                                                             <h6>Jenis Kelamin</h6>
-                                                            <p class="text-muted">{{ $employee->gender}}</p>
+                                                            <p class="text-muted">{{ $profile->gender}}</p>
                                                         </div>
-                                                        <div class="col-6 mb-3">
+                                                        <div class="col-6">
                                                             <h6>Alamat</h6>
-                                                            <p class="text-muted">{{ $employee->address}}</p>
+                                                            <p class="text-muted">{{ $profile->address}}</p>
                                                         </div>
-                                                        <div class="col-6 mb-3">
+                                                        <div class="col-6">
                                                             <h6>Agama</h6>
-                                                            <p class="text-muted">{{ $employee->religion}}</p>
+                                                            <p class="text-muted">{{ $profile->religion}}</p>
                                                         </div>
-                                                        <div class="col-6 mb-3">
+                                                        <div class="col-6">
                                                             <h6>Jabatan</h6>
-                                                            <p class="text-muted">{{ $employee->position}}</p>
+                                                            <p class="text-muted">{{ $profile->position}}</p>
                                                         </div>
-                                                        <div class="col-6 mb-3">
+                                                        <div class="col-6">
                                                             <h6>Penempatan</h6>
-                                                            <p class="text-muted">{{ $employee->sites}}</p>
+                                                            <p class="text-muted">{{ $profile->sites}}</p>
                                                         </div>
                                                     </div>
                                                     <h6>Kontak</h6>
                                                     <hr class="mt-0 mb-4">
                                                     <div class="row pt-1">
-                                                        <div class="col-6 mb-3">
+                                                        <div class="col-6">
                                                             <h6>Nomor Telpon</h6>
-                                                            <p class="text-muted">{{ $employee->phone_number }}</p>
+                                                            <p class="text-muted">{{ $profile->phone_number }}</p>
                                                         </div>
-                                                        <div class="col-6 mb-3">
+                                                        <div class="col-6">
                                                             <h6>Email</h6>
-                                                            <p class="text-muted">{{ $employee->user->email }}</p>
+                                                            <p class="text-muted">{{ $profile->user->email }}</p>
                                                         </div>
                                                     </div>
                                                     <div class="d-flex justify-content-start">
@@ -94,7 +92,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @endforeach
                                     </div>
                                 </div>
                             </div>
