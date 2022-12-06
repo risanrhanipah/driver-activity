@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Detailspj;
 use App\Models\SPJ;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PengajuanSPJController extends Controller
 {
@@ -27,9 +29,7 @@ class PengajuanSPJController extends Controller
      */
     public function create()
     {
-        $pengajuan_spj = SPJ::latest()->paginate(5);
-        return view('spj.create', compact('pengajuan_spj'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('spj.create');
     }
 
     /**
@@ -40,73 +40,42 @@ class PengajuanSPJController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'date_pengajuan' => 'required',
-            'spj' => 'required',
-            'ket' => 'required',
+        $validasi = $request->validate([
+            'start_date'    => 'required',
+            'end_date'      => 'required',
+            'project'       => 'required',
+            'description'   => 'required',
         ]);
 
-        SPJ::create($request->all());
+        $validasi['user_id'] = Auth::id();
 
-        return redirect()->route('pengajuan_spj.show')->with('created successfully');
-    }
+        $spj = SPJ::create($validasi);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\SPJ  $pengajuanSPJ
-     * @return \Illuminate\Http\Response
-     */
-    public function show(SPJ $pengajuanSPJ)
-    {
-        $pengajuan_spj = SPJ::latest()->paginate(5);
-        return view('spj.show', compact('pengajuan_spj'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
-    }
+        $tgl1 = strtotime($request->start_date);
+        $tgl2 = strtotime($request->end_date);
+        $jarak = ($tgl2 - $tgl1) / 60 / 60 / 24;
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\SPJ  $pengajuanSPJ
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(SPJ $pengajuanSPJ)
-    {
-        return view('spj.edit', compact('pengajuan_spj'));
-    }
+        $nominal = 0;
+        foreach ($request->keperluan as $detail) {
+            if ($detail->keperluan == 'Uang Makan') {
+                $nominal = 45000;
+            } else if ($detail->keperluan == 'Uang Saku') {
+                $nominal = 25000;
+            } else if ($detail->keperluan == 'Uang Penginapan') {
+                $nominal = 50000;
+            } else {
+                $nominal = $request->nominal;
+            }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SPJ  $pengajuanSPJ
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, SPJ $pengajuanSPJ)
-    {
-        $request->validate([
-            'name' => 'required',
-            'date_pengajuan' => 'required',
-            'spj' => 'required',
-            'ket' => 'required',
-        ]);
+            Detailspj::create([
+                'spj_id' => $spj->id,
+                'keperluan' => $detail->keperluan,
+                'nominal' => $nominal,
+                'jumlah' => $jarak,
+                'total' => intval($nominal) * intval($jarak)
+            ]);
+        }
 
-        $pengajuanSPJ->update($request->all());
-
-        return redirect()->route('pengajuan_spj.index')->with('updated successfully');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\SPJ  $pengajuanSPJ
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(SPJ $pengajuanSPJ)
-    {
-        $pengajuanSPJ->delete();
-
-        return redirect()->route('pengajuan_spj.index')->with('deleted successfully');
+        return redirect()->route('pengajuan.spj')->with('created successfully');
     }
 }

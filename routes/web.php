@@ -33,8 +33,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin', [LoginController::class, 'admin'])->name('admin');
     Route::get('/user', [LoginController::class, 'user'])->name('user');
     Route::get('/history', [AttendanceController::class, 'history'])->name('attendance.history');
+
+    Route::get('/pengajuan_spj', [PengajuanSPJController::class, 'index'])->name('pengajuan.spj');
+    Route::get('/pengajuan_spj/create', [PengajuanSPJController::class, 'create'])->name('pengajuan_spj.create');
+    Route::post('/pengajuan_spj/create', [PengajuanSPJController::class, 'store'])->name('pengajuan_spj.store');
+
     Route::resource('attendance', AttendanceController::class);
-    Route::resource('pengajuan_spj', PengajuanSPJController::class);
     Route::resource('employee', EmployeeController::class);
 });
 
