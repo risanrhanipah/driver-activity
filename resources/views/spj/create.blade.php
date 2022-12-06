@@ -33,17 +33,18 @@
                                         </div>
                                     </div>
                                     @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
+                                        <div class="alert alert-danger">
+                                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
                                     @endif
 
-                                    <form class="form-sample" action="{{ route('pengajuan_spj.store') }}" method="POST">
+                                    <form class="form-sample" action="{{ route('pengajuan_spj.store') }}"
+                                        method="POST">
                                         @csrf
                                         <br>
                                         <div class="row">
@@ -80,8 +81,7 @@
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Keterangan</label>
                                                     <div class="col-sm-9">
-                                                        <textarea type="text" name="ket" class="form-control"
-                                                            placeholder="Keterangan"></textarea>
+                                                        <textarea type="text" name="ket" class="form-control" placeholder="Keterangan"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
