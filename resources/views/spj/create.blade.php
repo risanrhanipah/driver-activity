@@ -80,31 +80,40 @@
                                                     <div class="form-group col-sm-4">
                                                         <div class="form-check form-check-primary">
                                                             <label class="form-check-label">
-                                                                <input type="checkbox" name="keperluan"
-                                                                    class="form-check-input" checked>
+                                                                <input type="checkbox" name="keperluan[]"
+                                                                    class="form-check-input" value="Uang Makan">
                                                                 Uang Makan
                                                             </label>
                                                         </div>
                                                         <div class="form-check form-check-success">
                                                             <label class="form-check-label">
-                                                                <input type="checkbox" name="keperluan"
-                                                                    class="form-check-input" checked>
+                                                                <input type="checkbox" name="keperluan[]"
+                                                                    class="form-check-input" value="Uang Saku">
                                                                 Uang Saku
                                                             </label>
                                                         </div>
                                                         <div class="form-check form-check-info">
                                                             <label class="form-check-label">
-                                                                <input type="checkbox" name="keperluan"
-                                                                    class="form-check-input" checked>
-                                                                Penginapan
+                                                                <input type="checkbox" name="keperluan[]"
+                                                                    class="form-check-input" value="Uang Penginapan">
+                                                                Uang Penginapan
                                                             </label>
                                                         </div>
                                                         <div class="form-check form-check-danger">
                                                             <label class="form-check-label">
-                                                                <input type="checkbox" name="keperluan"
-                                                                    class="form-check-input" checked>
-                                                                Lain-lain
+                                                                <input type="checkbox" name="keperluan[]"
+                                                                    class="form-check-input" value="Other">
+                                                                Other
                                                             </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6" id="nominal">
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-3 col-form-label">Nominal</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" name="nominal" class="form-control">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
