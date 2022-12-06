@@ -9,7 +9,7 @@ class Detailspj extends Model
 {
     use HasFactory;
 
-    protected $table = 'detailspj';
+    protected $table = 'detailspjs';
     protected $fillable = [
         'spj_id',
         'keperluan',

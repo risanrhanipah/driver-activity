@@ -33,17 +33,18 @@
                                         </div>
                                     </div>
                                     @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
+                                        <div class="alert alert-danger">
+                                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
                                     @endif
 
-                                    <form class="form-sample" action="{{ route('pengajuan_spj.store') }}" method="POST">
+                                    <form class="form-sample" action="{{ route('pengajuan_spj.store') }}"
+                                        method="POST">
                                         @csrf
                                         <br>
                                         <div class="row">
@@ -69,54 +70,85 @@
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Description</label>
                                                     <div class="col-sm-9">
-                                                        <textarea type="text" name="description" class="form-control"
-                                                            placeholder="Description"></textarea>
+                                                        <textarea type="text" name="description" class="form-control" placeholder="Description"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Keperluan</label>
-                                                    <div class="form-group col-sm-4">
-                                                        <div class="form-check form-check-primary">
-                                                            <label class="form-check-label">
-                                                                <input type="checkbox" name="keperluan[]"
-                                                                    class="form-check-input" value="Uang Makan">
-                                                                Uang Makan
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check form-check-success">
-                                                            <label class="form-check-label">
-                                                                <input type="checkbox" name="keperluan[]"
-                                                                    class="form-check-input" value="Uang Saku">
-                                                                Uang Saku
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check form-check-info">
-                                                            <label class="form-check-label">
-                                                                <input type="checkbox" name="keperluan[]"
-                                                                    class="form-check-input" value="Uang Penginapan">
-                                                                Uang Penginapan
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check form-check-danger">
-                                                            <label class="form-check-label">
-                                                                <input type="checkbox" name="keperluan[]"
-                                                                    class="form-check-input" value="Other">
-                                                                Other
-                                                            </label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-6" id="nominal">
-                                                        <div class="form-group row">
-                                                            <label class="col-sm-3 col-form-label">Nominal</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" name="nominal" class="form-control">
+                                                    <div class="form-group col-sm">
+                                                        <div class="row ">
+                                                            <div class="form-check col-sm-6 form-check-primary">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" name="keperluan[]"
+                                                                        class="form-check-input" value="Uang Makan">
+                                                                    Uang Makan
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check col-sm-6 form-check-success">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" name="keperluan[]"
+                                                                        class="form-check-input" value="Uang Saku">
+                                                                    Uang Saku
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check col-sm-6 form-check-info">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" name="keperluan[]"
+                                                                        class="form-check-input"
+                                                                        value="Uang Penginapan">
+                                                                    Uang Penginapan
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check col-sm-6 form-check-danger">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" name="keperluan[]"
+                                                                        class="form-check-input" value="Other">
+                                                                    Other
+                                                                </label>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label for=""
+                                                        class="col-sm-3 col-from-label">Project</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="project" class="form-control"
+                                                            placeholder="Project">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-6" id="nominal">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-4 col-form-label">Keperluan</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" name="keperluan_other"
+                                                                    class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-4 col-form-label">Nominal</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" name="nominal"
+                                                                    class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                 </div>
@@ -143,6 +175,21 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
     @include('template.plugin')
+    <script>
+        $(document).ready(function() {
+            $('#nominal').hide();
+
+            $('[name="keperluan[]"]').change(function() {
+                $('input[name="keperluan[]"]:checked').each(function(i) {
+                    if ($(this).val() == 'Other') {
+                        $('#nominal').show();
+                    } else {
+                        $('#nominal').hide();
+                    }
+                })
+            })
+        });
+    </script>
     <!-- End custom js for this page-->
 </body>
 
