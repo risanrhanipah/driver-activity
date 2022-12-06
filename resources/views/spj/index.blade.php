@@ -62,7 +62,7 @@
                                                             alt="{{ $pengajuanspj->profile}}" />
                                                         </img>
                                                     </td>
-                                                    <td>{{ $pengajuanspj->employee->name }}</td>
+                                                    <td>{{ $pengajuanspj->user->name }}</td>
                                                     <td>{{ $pengajuanspj->start_date }}</td>
                                                     <td>{{ $pengajuanspj->end_date }}</td>
                                                     <td>{{ $pengajuanspj->pengajuanspj->count()}}</td>

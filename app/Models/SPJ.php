@@ -17,4 +17,14 @@ class SPJ extends Model
         'project',
         'description'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function detailspj()
+    {
+        return $this->hasMany(Detailspj::class);
+    }
 }

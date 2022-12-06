@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Employee::class);
     }
+
+    public function spj()
+    {
+        return $this->hasMany(SPJ::class);
+    }
 }

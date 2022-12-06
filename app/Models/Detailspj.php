@@ -17,4 +17,9 @@ class Detailspj extends Model
         'jumlah',
         'total'
     ];
+
+    public function spj()
+    {
+        return $this->belongsTo(SPJ::class);
+    }
 }
