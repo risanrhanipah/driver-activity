@@ -26,24 +26,24 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="pull-right">
-                                                <a href="{{ route('pengajuan_spj.index') }}"><i
+                                                <a href="{{ route('pengajuan.spj') }}"><i
                                                         class="mdi mdi-arrow-left-bold-circle mdi-24px"
                                                         style="color:#00008B; text-align:right;"></i></a>
                                             </div>
                                         </div>
                                     </div>
                                     @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
+                                        <div class="alert alert-danger">
+                                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
                                     @endif
 
-                                    <form action="{{ route('pengajuan_spj.update',$pengajuan_spj->id) }}" method="POST">
+                                    <form action="{{ route('pengajuan_spj.update', $spj->id) }}" method="POST">
                                         @csrf
                                         @method('PUT')
                                         <br>
@@ -53,8 +53,7 @@
                                                     <label class="col-sm-3 col-form-label">Start Date</label>
                                                     <div class="col-sm-9">
                                                         <input type="date" name="start_date"
-                                                            value="{{ $pengajuan_spj->start_date }}"
-                                                            class="form-control">
+                                                            value="{{ $spj->start_date }}" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -63,7 +62,7 @@
                                                     <label class="col-sm-3 col-form-label">End Date</label>
                                                     <div class="col-sm-9">
                                                         <input type="date" name="end_date"
-                                                            value="{{ $pengajuan_spj->end_date }}" class="form-control">
+                                                            value="{{ $spj->end_date }}" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -74,8 +73,8 @@
                                                     <label class="col-sm-3 col-form-label">Description</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="description"
-                                                            value="{{ $pengajuan_spj->description }}"
-                                                            class="form-control" placeholder="Description">
+                                                            value="{{ $spj->description }}" class="form-control"
+                                                            placeholder="Description">
                                                     </div>
                                                 </div>
                                             </div>

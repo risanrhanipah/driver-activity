@@ -25,6 +25,6 @@ class SPJ extends Model
 
     public function detailspj()
     {
-        return $this->hasMany(Detailspj::class);
+        return $this->hasMany(Detailspj::class, 'spj_id', 'id');
     }
 }
