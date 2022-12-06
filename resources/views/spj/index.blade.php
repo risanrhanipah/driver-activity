@@ -45,9 +45,12 @@
                                                     <th width="50px">No</th>
                                                     <th width="100px">Profile</th>
                                                     <th width="250px">Name</th>
-                                                    <th width="100px">Site</th>
-                                                    <th width="100px">Penempatan</th>
-                                                    <th width="100px">Action</th>
+                                                    <th width="100px">Start Date</th>
+                                                    <th width="100px">End Date</th>
+                                                    <th width="100px">Days Total</th>
+                                                    <th width="100px">Project</th>
+                                                    <th width="100px">Description</th>
+                                                    <th width="100px">Detail SPJ</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -59,12 +62,15 @@
                                                             alt="{{ $pengajuanspj->profile}}" />
                                                         </img>
                                                     </td>
-                                                    <td>{{ $pengajuanspj->name }}</td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td>{{ $pengajuanspj->employee->name }}</td>
+                                                    <td>{{ $pengajuanspj->start_date }}</td>
+                                                    <td>{{ $pengajuanspj->end_date }}</td>
+                                                    <td>{{ $pengajuanspj->pengajuanspj->count()}}</td>
+                                                    <td>{{ $pengajuanspj->project }}</td>
+                                                    <td>{{ $pengajuanspj->description }}</td>
                                                     <td>
                                                         <a href="{{ route('pengajuan_spj.show',$pengajuanspj->id) }}"><i
-                                                                class="mdi mdi-eye-off mdi-24px"
+                                                                class="mdi mdi-file-pdf mdi-24px"
                                                                 style="color:#00008B;"></i></a>
                                                     </td>
                                                 </tr>

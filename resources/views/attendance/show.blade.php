@@ -41,15 +41,15 @@
                                                 <tr style="text-align:center;">
                                                     <th>No</th>
                                                     <th>Name</th>
-                                                    <th>Tanggal (IN)</th>
-                                                    <th>Tanggal (OUT)</th>
+                                                    <th>Date (IN)</th>
+                                                    <th>Date (OUT)</th>
                                                     <th>Kilometer (IN)</th>
                                                     <th>Kilometer (OUT)</th>
-                                                    <th>Pemakaian</th>
+                                                    <th>Usage</th>
                                                     <th>Start OT</th>
                                                     <th>Finish OT</th>
-                                                    <th>Jumlah OT</th>
-                                                    <th>Keterangan</th>
+                                                    <th>Amount OT</th>
+                                                    <th>Description</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

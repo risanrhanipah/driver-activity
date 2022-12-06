@@ -50,21 +50,20 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Nama</label>
+                                                    <label class="col-sm-3 col-form-label">Start Date</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="name"
-                                                            value="{{ $pengajuan_spj->name }}" class="form-control"
-                                                            placeholder="Name">
+                                                        <input type="date" name="start_date"
+                                                            value="{{ $pengajuan_spj->start_date }}"
+                                                            class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Tanggal Pengajuan</label>
+                                                    <label class="col-sm-3 col-form-label">End Date</label>
                                                     <div class="col-sm-9">
-                                                        <input type="date" name="date"
-                                                            value="{{ $pengajuan_spj->date_pengajuan }}"
-                                                            class="form-control" placeholder="Date">
+                                                        <input type="date" name="end_date"
+                                                            value="{{ $pengajuan_spj->end_date }}" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -72,22 +71,15 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Draft SPJ</label>
+                                                    <label class="col-sm-3 col-form-label">Description</label>
                                                     <div class="col-sm-9">
-                                                        <input type="time" name="in" value="{{ $pengajuan_spj->spj }}"
-                                                            class="form-control" placeholder="In">
+                                                        <input type="text" name="description"
+                                                            value="{{ $pengajuan_spj->description }}"
+                                                            class="form-control" placeholder="Description">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Keterangan</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="ket" value="{{ $pengajuan_spj->ket }}"
-                                                            class="form-control" placeholder="Keterangan">
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                             <div class="col-xs-12 col-sm-12 col-md-12 text-right">
                                                 <button type="submit" style="border:0; background-color:transparent"><i
                                                         class="mdi mdi-telegram mdi-36px"

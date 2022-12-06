@@ -33,14 +33,14 @@
                                         </div>
                                     </div>
                                     @if ($errors->any())
-                                        <div class="alert alert-danger">
-                                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                            <ul>
-                                                @foreach ($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
+                                    <div class="alert alert-danger">
+                                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                     @endif
 
                                     <form class="form-sample" action="{{ route('attendance.store') }}" method="POST">
@@ -49,7 +49,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Kilometer</label>
+                                                    <label class="col-sm-3 col-form-label">Kilometers</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="km" class="form-control"
                                                             placeholder="Kilometer">
@@ -62,21 +62,20 @@
                                                     <label class="col-sm-3 col-form-label">Status</label>
                                                     <div class="col-sm-9">
                                                         <select name="status" class="form-control" id="">
-                                                            <option value="in">C / In</option>
-                                                            <option value="out">C / Out</option>
+                                                            <option value="in">Check In</option>
+                                                            <option value="out">Check Out</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
-
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Keterangan</label>
+                                                    <label class="col-sm-3 col-form-label">Description</label>
                                                     <div class="col-sm-9">
-                                                        <textarea type="text" name="ket" class="form-control" placeholder="Keterangan"></textarea>
+                                                        <textarea type="text" name="ket" class="form-control"
+                                                            placeholder="Keterangan"></textarea>
                                                     </div>
                                                 </div>
                                             </div>

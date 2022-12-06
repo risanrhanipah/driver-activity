@@ -26,7 +26,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="pull-right">
-                                                <a href="{{ route('pengajuan_spj.show') }}"><i
+                                                <a href="{{ route('pengajuan_spj.index') }}"><i
                                                         class="mdi mdi-arrow-left-bold-circle mdi-24px"
                                                         style="color:#00008B; text-align:right;"></i></a>
                                             </div>
@@ -49,19 +49,17 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Nama</label>
+                                                    <label class="col-sm-3 col-form-label">Start Date</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="name" class="form-control"
-                                                            placeholder="Name">
+                                                        <input type="date" name="start_date" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Tanggal Pengajuan</label>
+                                                    <label class="col-sm-3 col-form-label">End Date</label>
                                                     <div class="col-sm-9">
-                                                        <input type="date" name="date_pengajuan" class="form-control"
-                                                            placeholder="Date">
+                                                        <input type="date" name="end_date" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -69,42 +67,69 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Draft SPJ</label>
+                                                    <label class="col-sm-3 col-form-label">Description</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="spj" class="form-control"
-                                                            placeholder="Draft SPJ">
+                                                        <textarea type="text" name="description" class="form-control"
+                                                            placeholder="Description"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Keterangan</label>
-                                                    <div class="col-sm-9">
-                                                        <textarea type="text" name="ket" class="form-control"
-                                                            placeholder="Keterangan"></textarea>
+                                                    <label class="col-sm-3 col-form-label">Keperluan</label>
+                                                    <div class="form-group col-sm-4">
+                                                        <div class="form-check form-check-primary">
+                                                            <label class="form-check-label">
+                                                                <input type="checkbox" name="keperluan"
+                                                                    class="form-check-input" checked>
+                                                                Uang Makan
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check form-check-success">
+                                                            <label class="form-check-label">
+                                                                <input type="checkbox" name="keperluan"
+                                                                    class="form-check-input" checked>
+                                                                Uang Saku
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check form-check-info">
+                                                            <label class="form-check-label">
+                                                                <input type="checkbox" name="keperluan"
+                                                                    class="form-check-input" checked>
+                                                                Penginapan
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check form-check-danger">
+                                                            <label class="form-check-label">
+                                                                <input type="checkbox" name="keperluan"
+                                                                    class="form-check-input" checked>
+                                                                Lain-lain
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xs-12 col-sm-12 col-md-12 text-right">
-                                                <button type="submit" style="border:0; background-color:transparent"><i
-                                                        class="mdi mdi-telegram mdi-36px"
-                                                        style="color:#00008B;"></i></button><br>
-                                            </div>
                                         </div>
-                                    </form>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 text-right">
+                                    <button type="submit" style="border:0; background-color:transparent"><i
+                                            class="mdi mdi-telegram mdi-36px" style="color:#00008B;"></i></button><br>
                                 </div>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <!-- content-wrapper ends -->
-                <!-- partial:../../partials/_footer.html -->
-                @include('template.footer')
-                <!-- partial -->
             </div>
-            <!-- main-panel ends -->
         </div>
-        <!-- page-body-wrapper ends -->
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        @include('template.footer')
+        <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->

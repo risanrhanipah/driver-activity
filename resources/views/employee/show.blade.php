@@ -40,43 +40,43 @@
                                                             <p class="text-muted">{{ $profile->nik }}</p>
                                                         </div>
                                                         <div class="col-6">
-                                                            <h6>Nama</h6>
+                                                            <h6>Name</h6>
                                                             <p class="text-muted">{{ $profile->user->name}}</p>
                                                         </div>
                                                         <div class="col-6 mb-0">
-                                                            <h6>Tempat Lahir</h6>
+                                                            <h6>Born City</h6>
                                                             <p class="text-muted">{{ $profile->born_city}}</p>
                                                         </div>
                                                         <div class="col-6">
-                                                            <h6>Tanggal Lahir</h6>
+                                                            <h6>Birthday</h6>
                                                             <p class="text-muted">{{ $profile->birthday}}</p>
                                                         </div>
                                                         <div class="col-6">
-                                                            <h6>Jenis Kelamin</h6>
+                                                            <h6>Gender</h6>
                                                             <p class="text-muted">{{ $profile->gender}}</p>
                                                         </div>
                                                         <div class="col-6">
-                                                            <h6>Alamat</h6>
+                                                            <h6>Address</h6>
                                                             <p class="text-muted">{{ $profile->address}}</p>
                                                         </div>
                                                         <div class="col-6">
-                                                            <h6>Agama</h6>
+                                                            <h6>Religion</h6>
                                                             <p class="text-muted">{{ $profile->religion}}</p>
                                                         </div>
                                                         <div class="col-6">
-                                                            <h6>Jabatan</h6>
+                                                            <h6>Position</h6>
                                                             <p class="text-muted">{{ $profile->position}}</p>
                                                         </div>
                                                         <div class="col-6">
-                                                            <h6>Penempatan</h6>
+                                                            <h6>Site</h6>
                                                             <p class="text-muted">{{ $profile->sites}}</p>
                                                         </div>
                                                     </div>
-                                                    <h6>Kontak</h6>
+                                                    <h6>Contact</h6>
                                                     <hr class="mt-0 mb-4">
                                                     <div class="row pt-1">
                                                         <div class="col-6">
-                                                            <h6>Nomor Telpon</h6>
+                                                            <h6>Phone Number</h6>
                                                             <p class="text-muted">{{ $profile->phone_number }}</p>
                                                         </div>
                                                         <div class="col-6">

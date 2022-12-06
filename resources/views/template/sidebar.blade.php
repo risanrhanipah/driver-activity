@@ -15,7 +15,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('pengajuan_spj.create') }}">
+            <a class="nav-link" href="{{ route('pengajuan_spj.index') }}">
                 <i class="icon-columns menu-icon"></i>
                 <span class="menu-title">Pengajuan SPJ</span>
             </a>

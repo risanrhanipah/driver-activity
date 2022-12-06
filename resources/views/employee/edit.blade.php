@@ -255,21 +255,21 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Tempat Lahir</label>
+                                                    <label class="col-sm-3 col-form-label">Born City</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="born_city"
                                                             value="{{ $employee->born_city }}" class="form-control"
-                                                            placeholder="Tempat Lahir">
+                                                            placeholder="Born City">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Tanggal Lahir</label>
+                                                    <label class="col-sm-3 col-form-label">Birthday</label>
                                                     <div class="col-sm-9">
                                                         <input type="date" name="birthday"
                                                             value="{{ $employee->birthday }}" class="form-control"
-                                                            placeholder="Tanggal Lahir">
+                                                            placeholder="Birthday">
                                                     </div>
                                                 </div>
                                             </div>
@@ -277,21 +277,21 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Jenis Kelamin</label>
+                                                    <label class="col-sm-3 col-form-label">Gender</label>
                                                     <div class="col-sm-9">
                                                         <select class="form-control" name="gender"
-                                                            value="{{ $employee->gender }}" placeholder="Jenis Kelamin">
-                                                            <option value="Perempuan" @if ($employee->gender =
-                                                                "Perempuan") selected @endif>Perempuan</option>
-                                                            <option value="Laki-laki" @if ($employee->gender =
-                                                                "Laki-laki") selected @endif>Laki-laki</option>
+                                                            value="{{ $employee->gender }}" placeholder="Gender">
+                                                            <option value="Female" @if ($employee->gender =
+                                                                "Female") selected @endif>Female</option>
+                                                            <option value="Male" @if ($employee->gender =
+                                                                "Male") selected @endif>Male</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Alamat</label>
+                                                    <label class="col-sm-3 col-form-label">Address</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="address"
                                                             value="{{ $employee->address }}" class="form-control"
@@ -303,7 +303,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Agama</label>
+                                                    <label class="col-sm-3 col-form-label">Religion</label>
                                                     <div class="col-sm-9">
                                                         <select class="form-control" name="religion"
                                                             value="{{ $employee->religion }}" placeholder="Agama">
@@ -319,11 +319,11 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Jabatan</label>
+                                                    <label class="col-sm-3 col-form-label">Position</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="position"
                                                             value="{{ $employee->position }}" class="form-control"
-                                                            placeholder="Jabatan">
+                                                            placeholder="Position">
                                                     </div>
                                                 </div>
                                             </div>
@@ -331,20 +331,20 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Penempatan</label>
+                                                    <label class="col-sm-3 col-form-label">Site</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="sites" value="{{ $employee->sites }}"
-                                                            class="form-control" placeholder="Penempatan">
+                                                            class="form-control" placeholder="Site">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Nomor Telpon</label>
+                                                    <label class="col-sm-3 col-form-label">Phone Number</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="phone_number"
                                                             value="{{ $employee->phone_number }}" class="form-control"
-                                                            placeholder="Nomor Telpon">
+                                                            placeholder="Phone Number">
                                                     </div>
                                                 </div>
                                             </div>
@@ -370,8 +370,6 @@
                                                             class="form-control" placeholder="Password"
                                                             autocomplete="new-password">
                                                     </div>
-
-
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12 text-right">

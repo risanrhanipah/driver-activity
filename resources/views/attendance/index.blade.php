@@ -24,17 +24,17 @@
                                     <br>
                                     <h4 class="card-title">Attendance</h4>
                                     @if (auth()->user()->role == 'user')
-                                        <div class="pull-right">
-                                            <a href="{{ route('attendance.create') }}"><i
-                                                    class="mdi mdi-account-multiple-plus mdi-24px"
-                                                    style="color:#00008B;"></i></a>
-                                        </div>
+                                    <div class="pull-right">
+                                        <a href="{{ route('attendance.create') }}"><i
+                                                class="mdi mdi-account-multiple-plus mdi-24px"
+                                                style="color:#00008B;"></i></a>
+                                    </div>
                                     @endif
 
                                     @if ($message = Session::get('success'))
-                                        <div class="alert alert-success">
-                                            <p>{{ $message }}</p>
-                                        </div>
+                                    <div class="alert alert-success">
+                                        <p>{{ $message }}</p>
+                                    </div>
                                     @endif
 
                                     <br>
@@ -45,31 +45,31 @@
                                                     <th>No</th>
                                                     <th>Profile</th>
                                                     <th>Name</th>
-                                                    <th>Jabatan</th>
-                                                    <th>Penempatan</th>
-                                                    <th>total Absen</th>
+                                                    <th>Position</th>
+                                                    <th>Site</th>
+                                                    <th>total Absence</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($attendances as $attendance)
-                                                    <tr style="text-align:center;">
-                                                        <td>{{ ++$i }}</td>
-                                                        <td>
-                                                            <img src="../assets/images/faces/employee.png"
-                                                                alt="{{ $attendance->profile }}" />
-                                                            </img>
-                                                        </td>
-                                                        <td>{{ $attendance->name }}</td>
-                                                        <td>{{ $attendance->employee->position }}</td>
-                                                        <td>{{ $attendance->employee->sites }}</td>
-                                                        <td>{{ $attendance->attendance->count() }}</td>
-                                                        <td>
-                                                            <a href="{{ route('attendance.show', $attendance->id) }}"><i
-                                                                    class="mdi mdi-eye-off mdi-24px"
-                                                                    style="color:#00008B;"></i></a>
-                                                        </td>
-                                                    </tr>
+                                                <tr style="text-align:center;">
+                                                    <td>{{ ++$i }}</td>
+                                                    <td>
+                                                        <img src="../assets/images/faces/employee.png"
+                                                            alt="{{ $attendance->profile }}" />
+                                                        </img>
+                                                    </td>
+                                                    <td>{{ $attendance->name }}</td>
+                                                    <td>{{ $attendance->employee->position }}</td>
+                                                    <td>{{ $attendance->employee->sites }}</td>
+                                                    <td>{{ $attendance->attendance->count() }}</td>
+                                                    <td>
+                                                        <a href="{{ route('attendance.show', $attendance->id) }}"><i
+                                                                class="mdi mdi-eye-off mdi-24px"
+                                                                style="color:#00008B;"></i></a>
+                                                    </td>
+                                                </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>

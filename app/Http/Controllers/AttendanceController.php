@@ -79,13 +79,13 @@ class AttendanceController extends Controller
         ]);
 
         // dd($request);
-        $check = Attendance::whereDate('date_in', '2022-12-03')->where('user_id', auth()->user()->id)->first();
+        $check = Attendance::whereDate('date_in', '2022-12-06')->where('user_id', auth()->user()->id)->first();
         // $check = Attendance::whereDate('date_in', date('Y-m-d'))->where('user_id', auth()->user()->id)->first();
         // dd($check);
         if ($request->status == 'in') {
 
             if ($check == null) {
-                $data['date_in'] = '2022-12-03 07:30:00'; // Tanggal Input Menjadi Tanggal Absensi
+                $data['date_in'] = '2022-12-06 07:30:00'; // Tanggal Input Menjadi Tanggal Absensi
                 // $data['date_in'] = date('Y-m-d H:i:s'); // Tanggal Input Menjadi Tanggal Absensi
                 $data['km_in'] = $request->km;
                 $data['ket'] = $request->ket;
@@ -97,7 +97,7 @@ class AttendanceController extends Controller
         } else {
             $in = $check->date_in;
             $tanggal_in = new DateTime($in);
-            $tanggal_out = new DateTime('2032-12-02 17:00:00');
+            $tanggal_out = new DateTime('2032-12-06 18:00:00');
             // $tanggal_out = new DateTime();
             $selisih = $tanggal_in->diff($tanggal_out);
 
