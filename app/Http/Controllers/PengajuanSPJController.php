@@ -90,7 +90,32 @@ class PengajuanSPJController extends Controller
 
     public function edit($id)
     {
+        $makan = "";
+        $penginapan = "";
+        $saku = "";
+        $other = "";
+
         $spj = SPJ::with('detailspj')->find($id);
+        // dd($spj);
+
+        foreach ($spj->detailspj as $detail) {
+            if ($detail->keperluan == "Uang Makan") {
+                $makan = $detail->keperluan;
+            } else if ($detail->keperluan == "Uang Penginapan") {
+                $penginapan = $detail->keperluan;
+            } else if ($detail->keperluan == "Uang Saku") {
+                $saku = $detail->keperluan;
+            } else {
+                $other = $detail->keperluan;
+            }
+        }
+
+        $spj['kep_makan'] = $makan;
+        $spj['kep_penginapan'] = $penginapan;
+        $spj['kep_saku'] = $saku;
+        $spj['kep_other'] = $other;
+
+        // dd($spj);
         return view('spj.edit', compact('spj'));
     }
 

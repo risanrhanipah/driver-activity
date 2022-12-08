@@ -72,18 +72,92 @@
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Description</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="description"
-                                                            value="{{ $spj->description }}" class="form-control"
-                                                            placeholder="Description">
+                                                        <textarea type="text" name="description" class="form-control" placeholder="Description">{{ $spj->description }}</textarea>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="col-xs-12 col-sm-12 col-md-12 text-right">
-                                                <button type="submit" style="border:0; background-color:transparent"><i
-                                                        class="mdi mdi-telegram mdi-36px"
-                                                        style="color:#00008B;"></i></button><br>
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">Keperluan</label>
+                                                    <div class="col-sm">
+                                                        <div class="d-flex">
+                                                            <div class="form-check d-flex-item form-check-primary">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" name="keperluan[]"
+                                                                        class="form-check-input" value="Uang Makan"
+                                                                        @if ($spj->kep_makan != '') checked @endif>
+                                                                    Uang Makan
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check d-flex-item form-check-success">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" name="keperluan[]"
+                                                                        class="form-check-input"
+                                                                        value="Uang Saku"@if ($spj->kep_saku != '') checked @endif>
+                                                                    Uang Saku
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check d-flex-item form-check-info">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" name="keperluan[]"
+                                                                        class="form-check-input" value="Uang Penginapan"
+                                                                        @if ($spj->kep_penginapan != '') checked @endif>
+                                                                    Uang Penginapan
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check d-flex-item form-check-danger">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" name="keperluan[]"
+                                                                        class="form-check-input" value="Other"
+                                                                        @if ($spj->other != '') checked @endif>
+                                                                    Other
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label for=""
+                                                        class="col-sm-3 col-from-label">Project</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="project" class="form-control"
+                                                            placeholder="Project" value="{{ $spj->project }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6" id="nominal">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-3 col-form-label">Keperluan</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" name="keperluan_other"
+                                                                    class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-3 col-form-label">Nominal</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" name="nominal"
+                                                                    class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-12 col-md-12 text-right">
+                                            <button type="submit" style="border:0; background-color:transparent"><i
+                                                    class="mdi mdi-telegram mdi-36px"
+                                                    style="color:#00008B;"></i></button><br>
                                         </div>
                                     </form>
                                 </div>
@@ -103,6 +177,21 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
     @include('template.plugin')
+    <script>
+        $(document).ready(function() {
+            $('#nominal').hide();
+
+            $('[name="keperluan[]"]').change(function() {
+                $('input[name="keperluan[]"]:checked').each(function(i) {
+                    if ($(this).val() == 'Other') {
+                        $('#nominal').show();
+                    } else {
+                        $('#nominal').hide();
+                    }
+                })
+            })
+        });
+    </script>
     <!-- End custom js for this page-->
 </body>
 
