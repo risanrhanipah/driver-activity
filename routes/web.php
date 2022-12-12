@@ -32,6 +32,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/admin', [LoginController::class, 'admin'])->name('admin');
     Route::get('/user', [LoginController::class, 'user'])->name('user');
+    Route::get('/driver', [LoginController::class, 'driver'])->name('driver');
+    Route::get('/general_affair', [LoginController::class, 'general_affair'])->name('general_affair');
     Route::get('/history', [AttendanceController::class, 'history'])->name('attendance.history');
 
     Route::get('/pengajuan_spj', [PengajuanSPJController::class, 'index'])->name('pengajuan.spj');

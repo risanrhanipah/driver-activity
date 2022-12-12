@@ -6,8 +6,21 @@
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
-
-        @if (auth()->user()->role == 'user')
+        @if (auth()->user()->role == 'driver')
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('attendance.history') }}">
+                <i class="icon-grid-2 menu-icon"></i>
+                <span class="menu-title">Attendance</span>
+            </a>
+        </li>
+        @elseif (auth()->user()->role == 'general affair')
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('employee.index') }}">
+                <i class="icon-head menu-icon"></i>
+                <span class="menu-title">Employee</span>
+            </a>
+        </li>
+        @elseif (auth()->user()->role == 'user')
         <li class="nav-item">
             <a class="nav-link" href="{{ route('attendance.history') }}">
                 <i class="icon-grid-2 menu-icon"></i>
@@ -34,7 +47,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('pengajuan_spj.index') }}">
+            <a class="nav-link" href="{{ route('pengajuan.spj') }}">
                 <i class="icon-columns menu-icon"></i>
                 <span class="menu-title">Pengajuan SPJ</span>
             </a>

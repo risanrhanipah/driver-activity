@@ -58,10 +58,12 @@
                                             {{-- <input id="role" type="text"
                                                 class="form-control @error('role') is-invalid @enderror" name="role"
                                                 value="{{ old('role') }}" required autocomplete="role"
-                                                placeholder="Role"> --}}
-                                            <select class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}">
+                                            placeholder="Role"> --}}
+                                            <select class="form-control @error('role') is-invalid @enderror" name="role"
+                                                value="{{ old('role') }}">
                                                 <option>admin</option>
                                                 <option>user</option>
+                                                <option>driver</option>
                                             </select>
 
                                             @error('role')

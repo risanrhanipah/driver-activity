@@ -33,18 +33,17 @@
                                         </div>
                                     </div>
                                     @if ($errors->any())
-                                        <div class="alert alert-danger">
-                                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                            <ul>
-                                                @foreach ($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
+                                    <div class="alert alert-danger">
+                                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                     @endif
 
-                                    <form class="form-sample" action="{{ route('pengajuan_spj.store') }}"
-                                        method="POST">
+                                    <form class="form-sample" action="{{ route('pengajuan_spj.store') }}" method="POST">
                                         @csrf
                                         <br>
                                         <div class="row">
@@ -70,7 +69,8 @@
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Description</label>
                                                     <div class="col-sm-9">
-                                                        <textarea type="text" name="description" class="form-control" placeholder="Description"></textarea>
+                                                        <textarea type="text" name="description" class="form-control"
+                                                            placeholder="Description"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -82,7 +82,8 @@
                                                             <div class="form-check d-flex-item form-check-primary">
                                                                 <label class="form-check-label">
                                                                     <input type="checkbox" name="keperluan[]"
-                                                                        class="form-check-input" value="Uang Makan">
+                                                                        class="form-check-input" value="Uang Makan"
+                                                                        style="width:100px;">
                                                                     Uang Makan
                                                                 </label>
                                                             </div>
@@ -116,8 +117,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label for=""
-                                                        class="col-sm-3 col-from-label">Project</label>
+                                                    <label for="" class="col-sm-3 col-from-label">Project</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="project" class="form-control"
                                                             placeholder="Project">
@@ -139,8 +139,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-3 col-form-label">Nominal</label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" name="nominal"
-                                                                    class="form-control">
+                                                                <input type="text" name="nominal" class="form-control">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -173,19 +172,19 @@
     <!-- plugins:js -->
     @include('template.plugin')
     <script>
-        $(document).ready(function() {
-            $('#nominal').hide();
+    $(document).ready(function() {
+        $('#nominal').hide();
 
-            $('[name="keperluan[]"]').change(function() {
-                $('input[name="keperluan[]"]:checked').each(function(i) {
-                    if ($(this).val() == 'Other') {
-                        $('#nominal').show();
-                    } else {
-                        $('#nominal').hide();
-                    }
-                })
+        $('[name="keperluan[]"]').change(function() {
+            $('input[name="keperluan[]"]:checked').each(function(i) {
+                if ($(this).val() == 'Other') {
+                    $('#nominal').show();
+                } else {
+                    $('#nominal').hide();
+                }
             })
-        });
+        })
+    });
     </script>
     <!-- End custom js for this page-->
 </body>

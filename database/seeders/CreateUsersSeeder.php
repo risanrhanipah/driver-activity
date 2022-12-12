@@ -22,9 +22,21 @@ class CreateUsersSeeder extends Seeder
                 'password' => bcrypt('123456'),
             ],
             [
-                'name' => 'Risa Nurhanifah',
+                'name' => 'User',
                 'email' => 'user@itsolutionstuff.com',
                 'role' => 'user',
+                'password' => bcrypt('123456'),
+            ],
+            [
+                'name' => 'Driver',
+                'email' => 'driver@itsolutionstuff.com',
+                'role' => 'driver',
+                'password' => bcrypt('123456'),
+            ],
+            [
+                'name' => 'General Affair',
+                'email' => 'ga@itsolutionstuff.com',
+                'role' => 'general affair',
                 'password' => bcrypt('123456'),
             ],
         ];

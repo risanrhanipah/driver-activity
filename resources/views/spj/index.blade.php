@@ -72,7 +72,7 @@
                                                     <td>
                                                         <a href="{{ route('pengajuan_spj.show',$pengajuanspj->id) }}"><i
                                                                 class="mdi mdi-file-pdf mdi-24px"
-                                                                style="color:#00008B;"></i></a>
+                                                                style="color:#D42525;"></i></a>
                                                         <a href=" {{ route('pengajuan_spj.edit', $pengajuanspj->id) }}"><i
                                                                 class="mdi mdi-account-edit mdi-24px"
                                                                 style="color:#F1C40F;"></i></a>
