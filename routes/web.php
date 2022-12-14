@@ -42,6 +42,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/pengajuan_spj/show/{id}', [PengajuanSPJController::class, 'show'])->name('pengajuan_spj.show');
     Route::get('/pengajuan_spj/edit/{id}', [PengajuanSPJController::class, 'edit'])->name('pengajuan_spj.edit');
     Route::put('/pengajuan_spj/update/{id}', [PengajuanSPJController::class, 'update'])->name('pengajuan_spj.update');
+    Route::get('/pengajuan_spj/export/{id}', function () {
+        return view('spj.export');
+    })->name('pengajuan_spj.export');
 
     Route::resource('attendance', AttendanceController::class);
     Route::resource('employee', EmployeeController::class);

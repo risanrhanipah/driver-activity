@@ -70,7 +70,7 @@
                                                     <td>{{ $pengajuanspj->project }}</td>
                                                     <td>{{ $pengajuanspj->description }}</td>
                                                     <td>
-                                                        <a href="{{ route('pengajuan_spj.show',$pengajuanspj->id) }}"><i
+                                                        <a href="{{ route('pengajuan_spj.export',$pengajuanspj->id) }}"><i
                                                                 class="mdi mdi-file-pdf mdi-24px"
                                                                 style="color:#D42525;"></i></a>
                                                         <a href=" {{ route('pengajuan_spj.edit', $pengajuanspj->id) }}"><i
