@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SPJ;
-use Barryvdh\DomPDF\PDF;
+use PDF;
 use App\Models\Detailspj;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -173,6 +173,8 @@ class PengajuanSPJController extends Controller
             'data' => $spj
         ]);
 
-        return $pdf->download('Pengajuan SPJ.pdf');
+        // return $pdf->download('Pengajuan SPJ.pdf');
+        return $pdf->stream("Pengajuan SPJ.pdf", array("Attachment" => false));
+        // exit(0);
     }
 }
