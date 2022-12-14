@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Detailspj;
 use App\Models\SPJ;
+use Barryvdh\DomPDF\PDF;
+use App\Models\Detailspj;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -162,5 +163,16 @@ class PengajuanSPJController extends Controller
         }
 
         return redirect()->route('pengajuan.spj')->with('created successfully');
+    }
+
+    public function export($id)
+    {
+        $spj = SPJ::with('detailspj')->find($id);
+
+        $pdf = PDF::loadView('spj.export', [
+            'data' => $spj
+        ]);
+
+        return $pdf->download('Pengajuan SPJ.pdf');
     }
 }
