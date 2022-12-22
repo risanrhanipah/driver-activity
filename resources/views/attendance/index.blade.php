@@ -41,7 +41,7 @@
                                     <div class="table-responsive">
                                         <table id="datatable" class="table table-striped" style="width:100%">
                                             <thead>
-                                                <tr style="text-align:center;">
+                                                <tr>
                                                     <th>No</th>
                                                     <th>Profile</th>
                                                     <th>Name</th>
@@ -53,7 +53,7 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($attendances as $attendance)
-                                                <tr style="text-align:center;">
+                                                <tr>
                                                     <td>{{ ++$i }}</td>
                                                     <td>
                                                         <img src="../assets/images/faces/employee.png"

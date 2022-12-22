@@ -22,10 +22,11 @@
                             <div class="card">
                                 <div class="card-body">
                                     <br>
-                                    <h4 class="card-title"> Attendance </h4>
+                                    <h4 class="card-title">Pengajuan SPJ</h4>
+
                                     @if (auth()->user()->role == 'driver')
                                     <div class="pull-right">
-                                        <a href="{{ route('attendance.create') }}"><i
+                                        <a href="{{ route('pengajuan_spj.create') }}"><i
                                                 class="mdi mdi-account-multiple-plus mdi-24px"
                                                 style="color:#00008B;"></i></a>
                                     </div>
@@ -36,37 +37,42 @@
                                         <p>{{ $message }}</p>
                                     </div>
                                     @endif
-
                                     <br>
                                     <div class="table-responsive">
                                         <table id="datatable" class="table table-striped" style="width:100%">
                                             <thead>
                                                 <tr style="text-align:center;">
-                                                    <th>No</th>
-                                                    <th>Tanggal (IN)</th>
-                                                    <th>Tanggal (OUT)</th>
-                                                    <th>Kilometer (IN)</th>
-                                                    <th>Kilometer (OUT)</th>
-                                                    <th>Pemakaian</th>
-                                                    <th>Start OT</th>
-                                                    <th>Finish OT</th>
-                                                    <th>Jumlah OT</th>
-                                                    <th>Keterangan</th>
+                                                    <th width="50px">No</th>
+                                                    <th width="100px">Profile</th>
+                                                    <th width="100px">Start Date</th>
+                                                    <th width="100px">End Date</th>
+                                                    <th width="100px">Days Total</th>
+                                                    <th>Project</th>
+                                                    <th width="100px">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($attendances as $attendance)
+                                                @foreach ($pengajuan_spj as $pengajuanspj)
                                                 <tr>
                                                     <td>{{ ++$i }}</td>
-                                                    <td>{{ $attendance->date_in }}</td>
-                                                    <td>{{ $attendance->date_out }}</td>
-                                                    <td>{{ $attendance->km_in }}</td>
-                                                    <td>{{ $attendance->km_out }}</td>
-                                                    <td>{{ $attendance->usage }}</td>
-                                                    <td>{{ $attendance->start_ot }}</td>
-                                                    <td>{{ $attendance->finish_ot }}</td>
-                                                    <td>{{ $attendance->jumlah_ot }}</td>
-                                                    <td>{{ $attendance->ket }}</td>
+                                                    <td>
+                                                        <img src="../assets/images/faces/employee.png"
+                                                            alt="{{ $pengajuanspj->profile}}" />
+                                                        </img>
+                                                    </td>
+                                                    <td>{{ $pengajuanspj->start_date }}</td>
+                                                    <td>{{ $pengajuanspj->end_date }}</td>
+                                                    <td>{{ (strtotime($pengajuanspj->end_date) - strtotime( $pengajuanspj->start_date)) / 60 /60 /24 }}
+                                                    </td>
+                                                    <td>{{ $pengajuanspj->project }}</td>
+                                                    <td>
+                                                        <a href="{{ route('pengajuan_spj.export',$pengajuanspj->id) }}"><i
+                                                                class="mdi mdi-file-pdf mdi-24px"
+                                                                style="color:#D42525;"></i></a>
+                                                        <a href=" {{ route('pengajuan_spj.edit', $pengajuanspj->id) }}"><i
+                                                                class="mdi mdi-account-edit mdi-24px"
+                                                                style="color:#F1C40F;"></i></a>
+                                                    </td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
@@ -90,10 +96,10 @@
     <!-- plugins:js -->
     <!-- endinject -->
     <!-- Custom js for this page-->
-    <!-- End custom js for this page-->
+    <!-- End custom js f   or this page-->
 </body>
 @include('template.plugin')
 
 </html>
 
-{!! $attendances->links() !!}
+<!-- {{ $pengajuan_spj->links() }} -->

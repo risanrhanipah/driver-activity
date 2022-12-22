@@ -16,26 +16,20 @@ class CreateUsersSeeder extends Seeder
     {
         $user = [
             [
-                'name' => 'Admin',
-                'email' => 'admin@itsolutionstuff.com',
+                'name' => 'Risa Nurhanipah',
+                'email' => 'risanurhanipah@admin.com',
                 'role' => 'admin',
-                'password' => bcrypt('123456'),
+                'password' => bcrypt('1234567'),
             ],
             [
-                'name' => 'User',
-                'email' => 'user@itsolutionstuff.com',
+                'name' => 'Ahmad Fatoni',
+                'email' => 'ahmadfatoni@user.com',
                 'role' => 'user',
                 'password' => bcrypt('123456'),
             ],
             [
-                'name' => 'Driver',
-                'email' => 'driver@itsolutionstuff.com',
-                'role' => 'driver',
-                'password' => bcrypt('123456'),
-            ],
-            [
-                'name' => 'General Affair',
-                'email' => 'ga@itsolutionstuff.com',
+                'name' => 'Iman Suherman',
+                'email' => 'imansuherman@gn.com',
                 'role' => 'general affair',
                 'password' => bcrypt('123456'),
             ],

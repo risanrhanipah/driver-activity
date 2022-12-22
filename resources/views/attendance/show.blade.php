@@ -22,12 +22,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <br>
-                                    <h4 class="card-title"> List Attendance </h4>
-                                    <div class="pull-right">
-                                        <a href="{{ route('attendance.index') }}"><i
-                                                class="mdi mdi-arrow-left-bold-circle mdi-24px"
-                                                style="color:#00008B; text-align:right;"></i></a>
-                                    </div>
+                                    <h4 class="card-title"> List Attendance</h4>
                                     @if ($message = Session::get('success'))
                                     <div class="alert alert-success">
                                         <p>{{ $message }}</p>

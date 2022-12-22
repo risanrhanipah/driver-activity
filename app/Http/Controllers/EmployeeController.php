@@ -43,6 +43,7 @@ class EmployeeController extends Controller
     {
         $request->validate([
             'nik' => 'required',
+            'id_card' => 'required',
             'name' => 'required',
             'born_city' => 'required',
             'birthday' => 'required',
@@ -59,11 +60,12 @@ class EmployeeController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'role' => 'user',
+            'role' => 'driver',
         ]);
 
         Employee::create([
             'nik' => $request->nik,
+            'id_card' => $request->id_card,
             'born_city' => $request->born_city,
             'birthday' => $request->birthday,
             'gender' => $request->gender,
@@ -114,6 +116,7 @@ class EmployeeController extends Controller
         $request->validate([
             'user_id' => 'required',
             'nik' => 'required',
+            'id_card' => 'required',
             'name' => 'required',
             'born_city' => 'required',
             'birthday' => 'required',
@@ -130,7 +133,7 @@ class EmployeeController extends Controller
 
         $data['name'] = $request->name;
         $data['email'] = $request->email;
-        $data['role'] = 'user';
+        $data['role'] = 'driver';
 
         if ($request->password != "") {
             $data['password'] = bcrypt($request->password);
@@ -141,6 +144,7 @@ class EmployeeController extends Controller
         $employee = Employee::where('user_id', $request->user_id);
         $employee->update([
             'nik' => $request->nik,
+            'id_card' => $request->nik,
             'born_city' => $request->born_city,
             'birthday' => $request->birthday,
             'gender' => $request->gender,

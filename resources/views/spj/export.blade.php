@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <center><img src="{{ public_path('assets/images/kop surat.png') }}" alt="" style="width: 800px; height: 120px;"
+    <center><img src="{{ public_path('assets/images/kop surat.png') }}" alt="" style="width: 800px; height: 118px;"
             align="top">
     </center>
     <br>
@@ -31,10 +31,11 @@
     </font>
     <table width="100%" class="table2">
         <tr class="noBorder">
-            <td width="20%">Form No.</td>
-            <td width="35%">:</td>
-            <td width="20%">Request Date</td>
-            <td>:</td>
+            <td width="18%">Form No.</td>
+            <td width="30%">: {{ $data->id }}</td>
+            <td width="18%">Request Date</td>
+            <td>: {{ date('d F', strtotime($data->start_date)) }} - {{ date('d F Y', strtotime($data->end_date)) }}
+            </td>
         </tr>
         <tr>
             <td>Form Plan</td>
@@ -42,29 +43,29 @@
         </tr>
         <tr>
             <td>Description</td>
-            <td>:</td>
+            <td>: {{ $data->ket }}</td>
         </tr>
         <tr>
-            <td width="20%">NIK</td>
-            <td width="35%">:</td>
-            <td width="20%">Directorate</td>
-            <td>:</td>
+            <td width="18%">NIK</td>
+            <td width="30%">: {{ $data->user->employee->nik }}</td>
+            <td width="18%">Directorate</td>
+            <td>: Sales and Marketing</td>
         </tr>
         <tr>
-            <td width="20%">Employee Name</td>
-            <td width="35%">:</td>
-            <td width="20%">Division</td>
-            <td>:</td>
+            <td width="18%">Employee Name</td>
+            <td width="30%">: {{ $data->user->name }}</td>
+            <td width="18%">Division</td>
+            <td>: Power Technical Management</td>
         </tr>
         <tr>
-            <td width="20%">Level/Position</td>
-            <td width="35%">:</td>
-            <td width="20%">Departement</td>
-            <td>:</td>
+            <td width="18%">Level/Position</td>
+            <td width="30%">: {{ $data->user->employee->position}}</td>
+            <td width="18%">Departement</td>
+            <td>: Technical Support and Care</td>
         </tr>
         <tr>
             <td>Project</td>
-            <td>:</td>
+            <td>: {{ $data->project }}</td>
         </tr>
     </table>
     <br>
@@ -81,17 +82,16 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($pengajuan_spj as $pengajuanspj)
             <tr>
-                <td>{{ ++$i }}</td>
-                <td>{{ $pengajuanspj->start_date}}</td>
-                <td>Dari pangkal pinang menuju jdjdjdjhjahjfdhjhri ffjkjsajhj dhdhskjiuiei shdhdhs ydyika
-                    uuudsjkjkahjweiuew usdjhahklflkjkjs idsiidsu</td>
+                <td align="center">1</td>
+                <td align="center">{{ date('d F', strtotime($data->start_date)) }} -
+                    {{ date('d F Y', strtotime($data->end_date)) }}
+                </td>
+                <td align="justify">{{ $data->description }}</td>
             </tr>
             <tr>
                 <td colspan="3"> Kembali masuk kerja :</td>
             </tr>
-            @endforeach
         </tbody>
     </table>
     <br>
@@ -115,8 +115,24 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
+            <?php $i = 0;
+            $grand_total = 0; ?>
+            @foreach ($data->detailspj as $detail)
+            @php
+            $grand_total += $detail->total;
+            @endphp
+            <tr align="center">
+                <td>{{ ++$i }}</td>
+                <td>{{ $detail->keperluan }}</td>
+                <td>IDR</td>
+                <td>Rp {{number_format($detail->nominal)}}</td>
+                <td>{{ $detail->jumlah}} hari</td>
+                <td></td>
+                <td>Rp {{number_format($detail->total)}}</td>
+            </tr>
+            @endforeach
+            <tr align="center">
+                <td>{{ ++$i }}</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -124,8 +140,8 @@
                 <td></td>
                 <td></td>
             </tr>
-            <tr>
-                <td>2</td>
+            <tr align="center">
+                <td>{{ ++$i }}</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -133,44 +149,8 @@
                 <td></td>
                 <td></td>
             </tr>
-            <tr>
-                <td>3</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>3</td>
+            <tr align="center">
+                <td>{{ ++$i }}</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -180,8 +160,8 @@
             </tr>
             <tr>
                 <th colspan="5" style="text-align: right;"> TOTAL</th>
-                <th></th>
-                <th></th>
+                <th>Rp {{ number_format($grand_total) }}</th>
+                <th>Rp {{ number_format($grand_total) }}</th>
             </tr>
             <tr>
                 <th colspan="5" style="text-align: right;"> PLUS / MINUS</th>
@@ -200,9 +180,10 @@
             <td width="40%">DRIVER</td>
             <td width="">VERIFIKASI</td>
         </tr>
+        <br><br><br><br><br>
         <tr>
             <td></td>
-            <td></td>
+            <td>{{ $data->user->employee->name }}</td>
             <td></td>
         </tr>
     </table>

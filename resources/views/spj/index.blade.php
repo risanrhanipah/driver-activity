@@ -23,7 +23,8 @@
                                 <div class="card-body">
                                     <br>
                                     <h4 class="card-title">Pengajuan SPJ</h4>
-                                    @if (auth()->user()->role == 'user')
+
+                                    @if (auth()->user()->role == 'driver')
                                     <div class="pull-right">
                                         <a href="{{ route('pengajuan_spj.create') }}"><i
                                                 class="mdi mdi-account-multiple-plus mdi-24px"
@@ -36,21 +37,18 @@
                                         <p>{{ $message }}</p>
                                     </div>
                                     @endif
-
                                     <br>
                                     <div class="table-responsive">
                                         <table id="datatable" class="table table-striped" style="width:100%">
                                             <thead>
                                                 <tr style="text-align:center;">
-                                                    <th width="50px">No</th>
-                                                    <th width="100px">Profile</th>
-                                                    <th width="250px">Name</th>
-                                                    <th width="100px">Start Date</th>
-                                                    <th width="100px">End Date</th>
-                                                    <th width="100px">Days Total</th>
-                                                    <th width="100px">Project</th>
-                                                    <th width="100px">Description</th>
-                                                    <th width="100px">Action</th>
+                                                    <th>No</th>
+                                                    <th>Profile</th>
+                                                    <th>Name</th>
+                                                    <th>Position</th>
+                                                    <th>Site</th>
+                                                    <th>Total Pengajuan SPJ</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -62,20 +60,14 @@
                                                             alt="{{ $pengajuanspj->profile}}" />
                                                         </img>
                                                     </td>
-                                                    <td>{{ $pengajuanspj->user->name }}</td>
-                                                    <td>{{ $pengajuanspj->start_date }}</td>
-                                                    <td>{{ $pengajuanspj->end_date }}</td>
-                                                    <td>{{ (strtotime($pengajuanspj->end_date) - strtotime( $pengajuanspj->start_date)) / 60 /60 /24 }}
-                                                    </td>
-                                                    <td>{{ $pengajuanspj->project }}</td>
-                                                    <td>{{ $pengajuanspj->description }}</td>
+                                                    <td>{{ $pengajuanspj->name }}</td>
+                                                    <td>{{ $pengajuanspj->employee->position }}</td>
+                                                    <td>{{ $pengajuanspj->employee->sites }}</td>
+                                                    <td>{{ $pengajuanspj->spj->count() }}</td>
                                                     <td>
-                                                        <a href="{{ route('pengajuan_spj.export',$pengajuanspj->id) }}"><i
-                                                                class="mdi mdi-file-pdf mdi-24px"
-                                                                style="color:#D42525;"></i></a>
-                                                        <a href=" {{ route('pengajuan_spj.edit', $pengajuanspj->id) }}"><i
-                                                                class="mdi mdi-account-edit mdi-24px"
-                                                                style="color:#F1C40F;"></i></a>
+                                                        <a href="{{ route('pengajuan_spj.show', $pengajuanspj->id) }}"><i
+                                                                class="mdi mdi-eye-off mdi-24px"
+                                                                style="color:#00008B;"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach

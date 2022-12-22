@@ -63,7 +63,6 @@
                                                 value="{{ old('role') }}">
                                                 <option>admin</option>
                                                 <option>user</option>
-                                                <option>driver</option>
                                             </select>
 
                                             @error('role')

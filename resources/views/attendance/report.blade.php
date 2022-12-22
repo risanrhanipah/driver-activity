@@ -22,14 +22,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <br>
-                                    <h4 class="card-title"> Attendance </h4>
-                                    @if (auth()->user()->role == 'driver')
-                                    <div class="pull-right">
-                                        <a href="{{ route('attendance.create') }}"><i
-                                                class="mdi mdi-account-multiple-plus mdi-24px"
-                                                style="color:#00008B;"></i></a>
-                                    </div>
-                                    @endif
+                                    <h4 class="card-title"> Report Attendance </h4>
 
                                     @if ($message = Session::get('success'))
                                     <div class="alert alert-success">
@@ -37,12 +30,18 @@
                                     </div>
                                     @endif
 
+                                    <div class="pull-right">
+                                        <a href="{{ route('report') }}"><i class="mdi mdi-file-excel mdi-24px"
+                                                style="color:#00008B;"></i></a>
+                                    </div>
                                     <br>
                                     <div class="table-responsive">
                                         <table id="datatable" class="table table-striped" style="width:100%">
                                             <thead>
                                                 <tr style="text-align:center;">
                                                     <th>No</th>
+                                                    <th>Profile</th>
+                                                    <th>Name</th>
                                                     <th>Tanggal (IN)</th>
                                                     <th>Tanggal (OUT)</th>
                                                     <th>Kilometer (IN)</th>
@@ -58,6 +57,12 @@
                                                 @foreach ($attendances as $attendance)
                                                 <tr>
                                                     <td>{{ ++$i }}</td>
+                                                    <td>
+                                                        <img src="../assets/images/faces/employee.png"
+                                                            alt="{{ $attendance->profile }}" />
+                                                        </img>
+                                                    </td>
+                                                    <td>{{ $attendance->user->name }}</td>
                                                     <td>{{ $attendance->date_in }}</td>
                                                     <td>{{ $attendance->date_out }}</td>
                                                     <td>{{ $attendance->km_in }}</td>
@@ -95,5 +100,4 @@
 @include('template.plugin')
 
 </html>
-
 {!! $attendances->links() !!}

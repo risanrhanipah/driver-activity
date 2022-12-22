@@ -206,15 +206,6 @@
                                 <div class="card-body">
                                     <br>
                                     <h4 class="card-title">Employee Edit</h4>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="pull-right">
-                                                <a href="{{ route('employee.index') }}"><i
-                                                        class="mdi mdi-arrow-left-bold-circle mdi-24px"
-                                                        style="color:#00008B; text-align:right;"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
                                     @if ($errors->any())
                                     <div class="alert alert-danger">
                                         <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -231,6 +222,18 @@
                                         @method('PUT')
                                         <br>
                                         <input type="hidden" name="user_id" value="{{ $employee->user_id }}">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label">ID Card</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="id_card"
+                                                            value="{{ $employee->id_card }}" class="form-control"
+                                                            placeholder="Nomor ID">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
@@ -374,7 +377,7 @@
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12 text-right">
                                                 <button type="submit" style="border:0; background-color:transparent"><i
-                                                        class="mdi mdi-telegram mdi-36px"
+                                                        class="mdi mdi-cube-send mdi-36px"
                                                         style="color:#00008B;"></i></button><br>
                                             </div>
                                         </div>

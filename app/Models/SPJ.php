@@ -15,6 +15,7 @@ class SPJ extends Model
         'start_date',
         'end_date',
         'project',
+        'ket',
         'description'
     ];
 

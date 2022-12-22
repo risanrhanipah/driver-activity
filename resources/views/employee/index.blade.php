@@ -213,9 +213,9 @@
                                     </div>
 
                                     @if ($message = Session::get('success'))
-                                        <div class="alert alert-success">
-                                            <p>{{ $message }}</p>
-                                        </div>
+                                    <div class="alert alert-success">
+                                        <p>{{ $message }}</p>
+                                    </div>
                                     @endif
 
                                     <br>
@@ -225,7 +225,7 @@
                                                 <tr>
                                                     <th>No</th>
                                                     <th>Profile</th>
-                                                    <th>NIK</th>
+                                                    <th>ID Card</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
                                                     <th width="100px">Action</th>
@@ -233,39 +233,38 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($employees as $employee)
-                                                    <tr class="align-middle">
-                                                        <td>{{ ++$i }}</td>
-                                                        <td>
-                                                            <img src="../assets/images/faces/employee.png"
-                                                                alt="{{ $employee->profile }}" />
-                                                            </img>
-                                                        </td>
-                                                        <td>{{ $employee->nik }}</td>
-                                                        <td>{{ $employee->user->name }}</td>
-                                                        <td>{{ $employee->user->email }}</td>
-                                                        <td>
-                                                            <form
-                                                                action="{{ route('employee.destroy', $employee->id) }}"
-                                                                method="POST">
+                                                <tr class="align-middle">
+                                                    <td>{{ ++$i }}</td>
+                                                    <td>
+                                                        <img src="../assets/images/faces/employee.png"
+                                                            alt="{{ $employee->profile }}" />
+                                                        </img>
+                                                    </td>
+                                                    <td>{{ $employee->id_card }}</td>
+                                                    <td>{{ $employee->user->name }}</td>
+                                                    <td>{{ $employee->user->email }}</td>
+                                                    <td>
+                                                        <form action="{{ route('employee.destroy', $employee->id) }}"
+                                                            method="POST">
 
-                                                                <a href="{{ route('employee.show', $employee->id) }}"><i
-                                                                        class="mdi mdi-eye-off mdi-24px"
-                                                                        style="color:#00008B;"></i></a>
+                                                            <a href="{{ route('employee.show', $employee->id) }}"><i
+                                                                    class="mdi mdi-eye-off mdi-24px"
+                                                                    style="color:#00008B;"></i></a>
 
-                                                                <a href=" {{ route('employee.edit', $employee->id) }}"><i
-                                                                        class="mdi mdi-account-edit mdi-24px"
-                                                                        style="color:#F1C40F;"></i></a>
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit"
-                                                                    style="border:0; background-color:transparent">
-                                                                    <a class="mdi mdi-delete-empty mdi-24px"
-                                                                        style="color:#D11010;"
-                                                                        onclick="return confirm('Are you sure?')"></a>
-                                                                </button>
-                                                            </form>
-                                                        </td>
-                                                    </tr>
+                                                            <a href=" {{ route('employee.edit', $employee->id) }}"><i
+                                                                    class="mdi mdi-account-edit mdi-24px"
+                                                                    style="color:#F1C40F;"></i></a>
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit"
+                                                                style="border:0; background-color:transparent">
+                                                                <a class="mdi mdi-delete-empty mdi-24px"
+                                                                    style="color:#D11010;"
+                                                                    onclick="return confirm('Are you sure?')"></a>
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>

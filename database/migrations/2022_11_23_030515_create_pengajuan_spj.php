@@ -19,6 +19,7 @@ class CreatePengajuanSpj extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->string('project');
+            $table->string('ket');
             $table->string('description');
             $table->timestamps();
 

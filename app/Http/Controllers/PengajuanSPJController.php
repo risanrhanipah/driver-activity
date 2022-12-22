@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\SPJ;
-use PDF;
+use App\Models\User;
 use App\Models\Detailspj;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\PDF;
+
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class PengajuanSPJController extends Controller
@@ -17,9 +20,37 @@ class PengajuanSPJController extends Controller
      */
     public function index()
     {
-        $pengajuan_spj = SPJ::latest()->paginate(5);
+        // $attendances = Attendance::latest()->paginate(5);
+        // $attendances = User::select("users.id", "users.name", "users.role", DB::raw('COUNT(attendance.user_id) as totalAbsen'))
+        //     ->leftJoin("attendance", "attendance.user_id", "=", "users.id")
+        //     ->latest("attendance.created_at")->paginate(5);
+
+        $pengajuan_spj = User::with(["spj", 'employee'])->where('role', 'driver')->paginate(5);
+        // dd($pengajuan_spj);
+
+        // if ($attendances->employee == null) {
+        //     return redirect()->route('employee.create');
+        // }
 
         return view('spj.index', compact('pengajuan_spj'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+    public function history_spj()
+    {
+        // $attendances = Attendance::latest()->paginate(5);
+        // $attendances = User::select("users.id", "users.name", "users.role", DB::raw('COUNT(attendance.user_id) as totalAbsen'))
+        //     ->leftJoin("attendance", "attendance.user_id", "=", "users.id")
+        //     ->latest("attendance.created_at")->paginate(5);
+
+        $pengajuan_spj = SPJ::with(["user", 'user.employee'])->where('user_id', auth()->user()->id)->paginate(5);
+        // dd($pengajuan_spj);
+
+        // if ($attendances->employee == null) {
+        //     return redirect()->route('employee.create');
+        // }
+
+        return view('spj.history', compact('pengajuan_spj'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -80,13 +111,16 @@ class PengajuanSPJController extends Controller
             ]);
         }
 
-        return redirect()->route('pengajuan.spj')->with('created successfully');
+        return redirect()->route('pengajuan.history_spj')->with('created successfully');
     }
 
-    public function show($id)
+    public function show($pengajuan_spj)
     {
-        $spj = SPJ::with('detailspj')->find($id);
-        return view('spj.edit', compact('spj'));
+        $pengajuan_spj = SPJ::where('user_id', $pengajuan_spj)->paginate(5);
+        return view('spj.show', compact('pengajuan_spj'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+
+        // return view('attendance.show', compact('attendance'));
     }
 
     public function edit($id)
@@ -129,6 +163,7 @@ class PengajuanSPJController extends Controller
             'start_date'    => 'required',
             'end_date'      => 'required',
             'project'       => 'required',
+            'ket'   => 'required',
             'description'   => 'required',
         ]);
 
@@ -162,19 +197,17 @@ class PengajuanSPJController extends Controller
             ]);
         }
 
-        return redirect()->route('pengajuan.spj')->with('created successfully');
+        return redirect()->route('pengajuan.history_spj')->with('created successfully');
     }
 
     public function export($id)
     {
-        $spj = SPJ::with('detailspj')->find($id);
-
+        $spj = SPJ::with('detailspj', 'user')->with('user.employee')->find($id);
+        // dd($spj);
         $pdf = PDF::loadView('spj.export', [
-            'data' => $spj
+            'data' => $spj,
         ]);
 
-        // return $pdf->download('Pengajuan SPJ.pdf');
-        return $pdf->stream("Pengajuan SPJ.pdf", array("Attachment" => false));
-        // exit(0);
+        return $pdf->stream('Pengajuan SPJ.pdf');
     }
 }

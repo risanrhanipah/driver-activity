@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Attendance;
-use App\Models\Employee;
-use App\Models\User;
-use DateInterval;
+use App\Exports\AttendanceExport;
+use PDF;
 use DateTime;
+use DateInterval;
+use App\Models\User;
+use App\Models\Employee;
+use App\Models\Attendance;
 use Illuminate\Http\Request;
+use Excel;
 use Illuminate\Support\Facades\DB;
 
 class AttendanceController extends Controller
@@ -24,7 +27,7 @@ class AttendanceController extends Controller
         //     ->leftJoin("attendance", "attendance.user_id", "=", "users.id")
         //     ->latest("attendance.created_at")->paginate(5);
 
-        $attendances = User::with(["attendance", 'employee'])->where('role', 'user')->paginate(5);
+        $attendances = User::with(["attendance", 'employee'])->where('role', 'driver')->paginate(5);
         // dd($attendances);
 
         // if ($attendances->employee == null) {
@@ -195,5 +198,32 @@ class AttendanceController extends Controller
         $attendance->delete();
 
         return redirect()->route('attendance.index')->with('deleted successfully');
+    }
+
+    public function timesheet()
+    {
+        $id = auth()->user()->id;
+        $employee = Employee::with('user')->where('user_id', $id)->first();
+        $timesheet = Attendance::where('user_id', $id)->get();
+        // dd($timesheet);
+        $pdf = PDF::loadView('attendance.timesheet', [
+            'attendance' => $timesheet,
+            'employee' => $employee
+        ]);
+
+        return $pdf->stream('Timesheet.pdf');
+    }
+
+    public function report()
+    {
+        return Excel::download(new AttendanceExport, 'attendance.xlsx');
+    }
+
+    public function report_attendance()
+    {
+        $attendances = Attendance::with(["user", 'user.employee'])->paginate(5);
+
+        return view('attendance.report', compact('attendances'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 }

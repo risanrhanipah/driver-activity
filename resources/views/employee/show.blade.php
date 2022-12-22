@@ -71,6 +71,10 @@
                                                             <h6>Site</h6>
                                                             <p class="text-muted">{{ $profile->sites}}</p>
                                                         </div>
+                                                        <div class="col-6">
+                                                            <h6>ID Card</h6>
+                                                            <p class="text-muted">{{ $profile->id_card}}</p>
+                                                        </div>
                                                     </div>
                                                     <h6>Contact</h6>
                                                     <hr class="mt-0 mb-4">
