@@ -27,9 +27,27 @@
         </li>
         @elseif (auth()->user()->role == 'user')
         <li class="nav-item">
+            <a class="nav-link" href="{{ route('employee.index') }}">
+                <i class="icon-head menu-icon"></i>
+                <span class="menu-title">Employee</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{{ route('pengajuan.spj') }}">
                 <i class="icon-columns menu-icon"></i>
                 <span class="menu-title">Pengajuan SPJ</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('attendance.index') }}">
+                <i class="icon-grid-2 menu-icon"></i>
+                <span class="menu-title">Attendance</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('attendance.timesheet') }}">
+                <i class="icon-paper menu-icon"></i>
+                <span class="menu-title">Timesheet</span>
             </a>
         </li>
         @else
@@ -61,6 +79,12 @@
             <a class="nav-link" href="{{ route('attendance.report_attendance') }}">
                 <i class="icon-paper menu-icon"></i>
                 <span class="menu-title">Report</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('attendance.history_timesheet') }}">
+                <i class="icon-paper menu-icon"></i>
+                <span class="menu-title">Timesheet</span>
             </a>
         </li>
         @endif

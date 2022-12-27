@@ -171,20 +171,20 @@
     </table>
     <br>
     <table width="100%" class="table2">
-        <td width="75%">Jakarta</td>
+        <td width="75%">Jakarta, {{ date('d F Y', strtotime($data->start_date)) }}</td>
     </table>
     <br><br>
     <table width="100%">
         <tr>
-            <td width="47%">APPROVAL USER</td>
+            <td width="44%">APPROVAL USER</td>
             <td width="40%">DRIVER</td>
             <td width="">VERIFIKASI</td>
         </tr>
-        <br><br><br><br><br>
+        <br><br><br><br>
         <tr>
-            <td></td>
-            <td>{{ $data->user->employee->name }}</td>
-            <td></td>
+            <td width="44%">(..............................)</td>
+            <td width="40%">{{ $data->user->name }}</td>
+            <td>(..............................)</td>
         </tr>
     </table>
 </body>

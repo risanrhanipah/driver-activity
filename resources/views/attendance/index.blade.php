@@ -23,7 +23,7 @@
                                 <div class="card-body">
                                     <br>
                                     <h4 class="card-title">Attendance</h4>
-                                    @if (auth()->user()->role == 'user')
+                                    @if (auth()->user()->role == 'driver')
                                     <div class="pull-right">
                                         <a href="{{ route('attendance.create') }}"><i
                                                 class="mdi mdi-account-multiple-plus mdi-24px"
@@ -65,7 +65,7 @@
                                                     <td>{{ $attendance->employee->sites }}</td>
                                                     <td>{{ $attendance->attendance->count() }}</td>
                                                     <td>
-                                                        <a href="{{ route('attendance.show', $attendance->id) }}"><i
+                                                        <a href="{{ route('attendance.history', $attendance->id) }}"><i
                                                                 class="mdi mdi-eye-off mdi-24px"
                                                                 style="color:#00008B;"></i></a>
                                                     </td>

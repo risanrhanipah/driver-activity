@@ -206,11 +206,13 @@
                                 <div class="card-body">
                                     <br>
                                     <h4 class="card-title">Employee</h4>
+                                    @if (auth()->user()->role == 'admin')
                                     <div class="pull-right">
                                         <a href="{{ route('employee.create') }}"><i
                                                 class="mdi mdi-account-multiple-plus mdi-24px"
                                                 style="color:#00008B;"></i></a>
                                     </div>
+                                    @endif
 
                                     @if ($message = Session::get('success'))
                                     <div class="alert alert-success">
@@ -228,12 +230,15 @@
                                                     <th>ID Card</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
+
                                                     <th width="100px">Action</th>
+
                                                 </tr>
+
                                             </thead>
                                             <tbody>
-                                                @foreach ($employees as $employee)
                                                 <tr class="align-middle">
+                                                    @foreach ($employees as $employee)
                                                     <td>{{ ++$i }}</td>
                                                     <td>
                                                         <img src="../assets/images/faces/employee.png"
@@ -243,14 +248,16 @@
                                                     <td>{{ $employee->id_card }}</td>
                                                     <td>{{ $employee->user->name }}</td>
                                                     <td>{{ $employee->user->email }}</td>
+
                                                     <td>
+
                                                         <form action="{{ route('employee.destroy', $employee->id) }}"
                                                             method="POST">
 
                                                             <a href="{{ route('employee.show', $employee->id) }}"><i
                                                                     class="mdi mdi-eye-off mdi-24px"
                                                                     style="color:#00008B;"></i></a>
-
+                                                            @if (auth()->user()->role == 'admin')
                                                             <a href=" {{ route('employee.edit', $employee->id) }}"><i
                                                                     class="mdi mdi-account-edit mdi-24px"
                                                                     style="color:#F1C40F;"></i></a>
@@ -264,6 +271,7 @@
                                                             </button>
                                                         </form>
                                                     </td>
+                                                    @endif
                                                 </tr>
                                                 @endforeach
                                             </tbody>

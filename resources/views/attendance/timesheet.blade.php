@@ -102,17 +102,20 @@
             <th colspan="8"></th>
         </tr>
         <tr>
-            <td colspan="8" align="left"><small>Note from supervisor</small> <br>
+            <td colspan="8" align="left"><small>Note from supervisor</small><br>
             </td>
         </tr>
         <tr>
-            <td colspan="3"><small>Confirm by client</small></td>
-            <td colspan="4" rowspan="2"><small>Name USER :</small><br><small>Date :</small><br><small>Signature</small>
-            </td>
-            <td colspan><small>Approved by</small></td>
+            <td colspan="3" rowspan="2"><small>Confirm by client</small></td>
+            <td colspan="4"><small>Name USER :</small></td>
+            <td colspan="1" rowspan="2"><small>Approved by</small></td>
+        </tr>
+        <tr>
+            <td colspan="4">Date :</td>
         </tr>
         <tr>
             <td colspan="3">Name</td>
+            <td colspan="4">Siganture :</td>
             <td colspan>Name</td>
         </tr>
     </table>

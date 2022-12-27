@@ -21,6 +21,8 @@ class CreatePengajuanSpj extends Migration
             $table->string('project');
             $table->string('ket');
             $table->string('description');
+            $table->integer('validasi_user');
+            $table->integer('validasi_admin');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

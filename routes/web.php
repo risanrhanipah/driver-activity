@@ -48,6 +48,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/pengajuan_spj/update/{id}', [PengajuanSPJController::class, 'update'])->name('pengajuan_spj.update');
     Route::get('/pengajuan_spj/export/{id}', [PengajuanSPJController::class, 'export'])->name('pengajuan_spj.export');
     Route::get('/attendance/timesheet', [AttendanceController::class, 'timesheet'])->name('attendance.timesheet');
+    Route::get('/attendance/history_timesheet', [AttendanceController::class, 'history_timesheet'])->name('attendance.history_timesheet');
+    Route::get('/attendance/list_timesheet/{id}', [AttendanceController::class, 'list_timesheet'])->name('attendance.list_timesheet');
     Route::resource('attendance', AttendanceController::class);
     Route::resource('employee', EmployeeController::class);
     Route::get('/report', [AttendanceController::class, 'report'])->name('report');

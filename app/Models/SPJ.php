@@ -16,7 +16,9 @@ class SPJ extends Model
         'end_date',
         'project',
         'ket',
-        'description'
+        'description',
+        'validasi_user',
+        'validasi_admin',
     ];
 
     public function user()
