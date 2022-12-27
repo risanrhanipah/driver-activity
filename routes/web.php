@@ -32,7 +32,6 @@ Auth::routes();
 
 
 Route::group(['middleware' => ['auth']], function () {
-
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/admin', [LoginController::class, 'admin'])->name('admin');
     Route::get('/user', [LoginController::class, 'user'])->name('user');
@@ -47,6 +46,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/pengajuan_spj/edit/{id}', [PengajuanSPJController::class, 'edit'])->name('pengajuan_spj.edit');
     Route::put('/pengajuan_spj/update/{id}', [PengajuanSPJController::class, 'update'])->name('pengajuan_spj.update');
     Route::get('/pengajuan_spj/export/{id}', [PengajuanSPJController::class, 'export'])->name('pengajuan_spj.export');
+    Route::get('/pengajuan_spj/validasi_user/{id}', [PengajuanSPJController::class, 'validation_user'])->name('pengajuan_spj.validation.user');
+    Route::get('/pengajuan_spj/validasi_admin/{id}', [PengajuanSPJController::class, 'validation_admin'])->name('pengajuan_spj.validation.admin');
     Route::get('/attendance/timesheet', [AttendanceController::class, 'timesheet'])->name('attendance.timesheet');
     Route::get('/attendance/history_timesheet', [AttendanceController::class, 'history_timesheet'])->name('attendance.history_timesheet');
     Route::get('/attendance/list_timesheet/{id}', [AttendanceController::class, 'list_timesheet'])->name('attendance.list_timesheet');

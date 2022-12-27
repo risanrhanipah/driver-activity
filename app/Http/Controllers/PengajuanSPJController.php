@@ -6,7 +6,7 @@ use App\Models\SPJ;
 use App\Models\User;
 use App\Models\Detailspj;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\PDF;
+use PDF;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -209,5 +209,27 @@ class PengajuanSPJController extends Controller
         ]);
 
         return $pdf->stream('Pengajuan SPJ.pdf');
+    }
+
+    public function validation_user($id)
+    {
+        $spj = SPJ::find($id);
+        $user_id = Auth::id();
+
+        $spj->validasi_user = $user_id;
+        $spj->update();
+
+        return redirect()->route('pengajuan.history_spj')->with('Validasi Sukses');
+    }
+
+    public function validation_admin($id)
+    {
+        $spj = SPJ::find($id);
+        $user_id = Auth::id();
+
+        $spj->validasi_admin = $user_id;
+        $spj->update();
+
+        return redirect()->route('pengajuan.history_spj')->with('Validasi Sukses');
     }
 }
