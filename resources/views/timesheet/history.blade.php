@@ -22,8 +22,8 @@
                             <div class="card">
                                 <div class="card-body">
                                     <br>
+                                    <h4 class="card-title">History Timesheet</h4>
 
-                                    <h4 class="card-title"> List Timesheet</h4>
                                     @if ($message = Session::get('success'))
                                     <div class="alert alert-success">
                                         <p>{{ $message }}</p>
@@ -36,6 +36,8 @@
                                             <thead>
                                                 <tr style="text-align:center;">
                                                     <th>No</th>
+                                                    <th>Profile</th>
+                                                    <th>Name</th>
                                                     <th>Periode</th>
                                                     <th>Time Sheet</th>
                                                 </tr>
@@ -44,9 +46,16 @@
                                                 @foreach ($attendances as $attendance)
                                                 <tr>
                                                     <td>{{ ++$i }}</td>
-                                                    <td>21 Desember - 20 Januari</td>
                                                     <td>
-                                                        <a href="{{ route('attendance.timesheet',$attendance->id) }}"><i
+                                                        <img src="../assets/images/faces/employee.png"
+                                                            alt="{{ $attendance->profile }}" />
+                                                        </img>
+                                                    </td>
+                                                    <td>{{ $attendance->user->name }}</td>
+                                                    <td>21 Desember 2022 - 20 Januari 2023</td>
+                                                    <td>
+                                                        <a
+                                                            href="{{ route('attendance.timesheet',$attendance->user_id) }}"><i
                                                                 class="mdi mdi-file-pdf mdi-24px"
                                                                 style="color:#D42525;"></i></a>
                                                     </td>

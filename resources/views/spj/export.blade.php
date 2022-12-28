@@ -180,7 +180,28 @@
             <td width="40%">DRIVER</td>
             <td width="">VERIFIKASI</td>
         </tr>
-        <br><br><br><br>
+        <tr>
+            <td width="44%">
+                @if ($data->validation_user != null)
+                <img src="{{ public_path('assets/images/signature/'.$data->validation_user->signature) }}" alt=""
+                    style="width: 150px; height: 120px;" align="top">
+
+                <!-- <img src="{{ public_path('assets/images/signature/user.png') }}" alt=""
+                    style="width: 150px; height: 120px;" align="top"> -->
+                @endif
+            </td>
+            <td width="40%"><img src="{{ public_path('assets/images/signature/'.$data->user->signature) }}" alt=""
+                    style="width: 150px; height: 120px;" align="top"></td>
+            <td>
+                @if ($data->validation_admin != null)
+                <!-- <img src="{{ public_path('assets/images/signature/'.$data->validation_admin->signature) }}" alt=""
+                    style="width: 150px; height: 120px;" align="top"> -->
+
+                <img src="{{ public_path('assets/images/signature/ga.png') }}" alt=""
+                    style="width: 150px; height: 120px;" align="top">
+                @endif
+            </td>
+        </tr>
         <tr>
             <td width="44%">(..............................)</td>
             <td width="40%">{{ $data->user->name }}</td>

@@ -20,7 +20,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('attendance.timesheet') }}">
+            <a class="nav-link" href="{{ route('attendance.timesheet_driver') }}">
                 <i class="icon-paper menu-icon"></i>
                 <span class="menu-title">Timesheet</span>
             </a>
@@ -45,7 +45,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('attendance.timesheet') }}">
+            <a class="nav-link" href="{{ route('attendance.history_timesheet') }}">
                 <i class="icon-paper menu-icon"></i>
                 <span class="menu-title">Timesheet</span>
             </a>
@@ -77,7 +77,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('attendance.report_attendance') }}">
-                <i class="icon-paper menu-icon"></i>
+                <i class="icon-book menu-icon"></i>
                 <span class="menu-title">Report</span>
             </a>
         </li>

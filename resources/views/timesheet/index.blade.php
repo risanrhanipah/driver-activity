@@ -22,7 +22,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <br>
-                                    <h4 class="card-title">Timesheet List</h4>
+                                    <h4 class="card-title">Timesheet</h4>
 
                                     @if ($message = Session::get('success'))
                                     <div class="alert alert-success">
@@ -34,13 +34,12 @@
                                     <div class="table-responsive">
                                         <table id="datatable" class="table table-striped" style="width:100%">
                                             <thead>
-                                                <tr style="text-align:center;">
+                                                <tr>
                                                     <th>No</th>
                                                     <th>Profile</th>
                                                     <th>Name</th>
                                                     <th>Position</th>
                                                     <th>Site</th>
-                                                    <th>total Absence</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -56,7 +55,6 @@
                                                     <td>{{ $attendance->name }}</td>
                                                     <td>{{ $attendance->employee->position }}</td>
                                                     <td>{{ $attendance->employee->sites }}</td>
-                                                    <td>{{ $attendance->attendance->count() }}</td>
                                                     <td>
                                                         <a
                                                             href="{{ route('attendance.list_timesheet', $attendance->id) }}"><i
@@ -86,9 +84,8 @@
     <!-- plugins:js -->
     <!-- endinject -->
     <!-- Custom js for this page-->
-    <!-- End custom js for this page-->
+    <!-- End custom js f   or this page-->
 </body>
 @include('template.plugin')
 
 </html>
-{!! $attendances->links() !!}

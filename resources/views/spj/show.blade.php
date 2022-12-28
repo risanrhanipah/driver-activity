@@ -71,6 +71,19 @@
                                                         <a href="{{ route('pengajuan_spj.export',$pengajuanspj->id) }}"><i
                                                                 class="mdi mdi-file-pdf mdi-24px"
                                                                 style="color:#D42525;"></i></a>
+                                                        @if (auth()->user()->role == 'user')
+                                                        <a
+                                                            href="{{ route('pengajuan_spj.validation.user',$pengajuanspj->id) }}"><i
+                                                                class="mdi mdi-checkbox-multiple-marked-circle mdi-24px"
+                                                                style="color:#389E2C;"></i></a>
+                                                        @endif
+
+                                                        @if (auth()->user()->role == 'admin')
+                                                        <a
+                                                            href="{{ route('pengajuan_spj.validation.admin',$pengajuanspj->id) }}"><i
+                                                                class="mdi mdi-checkbox-multiple-marked-circle mdi-24px"
+                                                                style="color:#389E2C;"></i></a>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                                 @endforeach

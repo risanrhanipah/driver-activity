@@ -30,4 +30,14 @@ class SPJ extends Model
     {
         return $this->hasMany(Detailspj::class, 'spj_id', 'id');
     }
+
+    public function validation_user()
+    {
+        return $this->belongsTo(User::class, 'validasi_user', 'id');
+    }
+
+    public function validation_admin()
+    {
+        return $this->belongsTo(User::class, 'validasi_admin', 'id');
+    }
 }

@@ -65,7 +65,7 @@
                                                     <td>{{ $attendance->employee->sites }}</td>
                                                     <td>{{ $attendance->attendance->count() }}</td>
                                                     <td>
-                                                        <a href="{{ route('attendance.history', $attendance->id) }}"><i
+                                                        <a href="{{ route('attendance.show', $attendance->id) }}"><i
                                                                 class="mdi mdi-eye-off mdi-24px"
                                                                 style="color:#00008B;"></i></a>
                                                     </td>

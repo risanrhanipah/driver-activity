@@ -202,8 +202,8 @@ class PengajuanSPJController extends Controller
 
     public function export($id)
     {
-        $spj = SPJ::with('detailspj', 'user')->with('user.employee')->find($id);
-        // dd($spj);
+        $spj = SPJ::with('detailspj', 'user', 'validation_user', 'validation_admin')->with('user.employee')->find($id);
+        // dd($spj->validation_admin);
         $pdf = PDF::loadView('spj.export', [
             'data' => $spj,
         ]);
@@ -214,22 +214,22 @@ class PengajuanSPJController extends Controller
     public function validation_user($id)
     {
         $spj = SPJ::find($id);
-        $user_id = Auth::id();
+        $user_id = auth()->user()->id;
 
         $spj->validasi_user = $user_id;
         $spj->update();
 
-        return redirect()->route('pengajuan.history_spj')->with('Validasi Sukses');
+        return redirect()->route('pengajuan.spj')->with('Validasi Sukses');
     }
 
     public function validation_admin($id)
     {
         $spj = SPJ::find($id);
-        $user_id = Auth::id();
+        $user_id = auth()->user()->id;
 
         $spj->validasi_admin = $user_id;
         $spj->update();
 
-        return redirect()->route('pengajuan.history_spj')->with('Validasi Sukses');
+        return redirect()->route('pengajuan.spj')->with('Validasi Sukses');
     }
 }

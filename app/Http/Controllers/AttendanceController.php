@@ -82,13 +82,13 @@ class AttendanceController extends Controller
         ]);
 
         // dd($request);
-        $check = Attendance::whereDate('date_in', '2022-12-07')->where('user_id', auth()->user()->id)->first();
+        $check = Attendance::whereDate('date_in', '2022-12-08')->where('user_id', auth()->user()->id)->first();
         // $check = Attendance::whereDate('date_in', date('Y-m-d'))->where('user_id', auth()->user()->id)->first();
         // dd($check);
         if ($request->status == 'in') {
 
             if ($check == null) {
-                $data['date_in'] = '2022-12-07 07:30:00'; // Tanggal Input Menjadi Tanggal Absensi
+                $data['date_in'] = '2022-12-08 07:30:00'; // Tanggal Input Menjadi Tanggal Absensi
                 // $data['date_in'] = date('Y-m-d H:i:s'); // Tanggal Input Menjadi Tanggal Absensi
                 $data['km_in'] = $request->km;
                 $data['ket'] = $request->ket;
@@ -100,7 +100,7 @@ class AttendanceController extends Controller
         } else {
             $in = $check->date_in;
             $tanggal_in = new DateTime($in);
-            $tanggal_out = new DateTime('2032-12-07 21:00:00');
+            $tanggal_out = new DateTime('2022-12-08 22:00:00');
             // $tanggal_out = new DateTime();
             $selisih = $tanggal_in->diff($tanggal_out);
 
@@ -175,7 +175,7 @@ class AttendanceController extends Controller
 
         $attendance->update($request->all());
 
-        return redirect()->route('attendance.history')->with('updated successfully');
+        return redirect()->route('attendance.show')->with('updated successfully');
     }
 
     /**
@@ -191,15 +191,15 @@ class AttendanceController extends Controller
         return redirect()->route('attendance.index')->with('deleted successfully');
     }
 
-    public function timesheet()
+    public function timesheet($id)
     {
-        $id = auth()->user()->id;
         $employee = Employee::with('user')->where('user_id', $id)->first();
-        $timesheet = Attendance::where('user_id', $id)->get();
+
+        $timesheet = Attendance::with('user')->with('user.employee')->get();
         // dd($timesheet);
-        $pdf = PDF::loadView('attendance.timesheet', [
+        $pdf = PDF::loadView('timesheet.show', [
             'attendance' => $timesheet,
-            'employee' => $employee
+            'employee' => $employee,
         ]);
 
         return $pdf->stream('Timesheet.pdf');
@@ -209,14 +209,14 @@ class AttendanceController extends Controller
     {
         $attendances = User::with(["attendance", 'employee'])->where('role', 'driver')->paginate(5);
 
-        return view('attendance.history_timesheet', compact('attendances'))
+        return view('timesheet.index', compact('attendances'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function list_timesheet($attendance)
     {
         $attendances = Attendance::where('user_id', $attendance)->paginate(5);
-        return view('attendance.list_timesheet', compact('attendances'))
+        return view('timesheet.list', compact('attendances'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -230,6 +230,24 @@ class AttendanceController extends Controller
         $attendances = Attendance::with(["user", 'user.employee'])->paginate(5);
 
         return view('attendance.report', compact('attendances'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+    public function timesheet_driver()
+    {
+        // $attendances = Attendance::latest()->paginate(5);
+        // $attendances = User::select("users.id", "users.name", "users.role", DB::raw('COUNT(attendance.user_id) as totalAbsen'))
+        //     ->leftJoin("attendance", "attendance.user_id", "=", "users.id")
+        //     ->latest("attendance.created_at")->paginate(5);
+
+        $attendances = Attendance::with(["user", 'user.employee'])->where('user_id', auth()->user()->id)->paginate(5);
+        // dd($attendances);
+
+        // if ($attendances->employee == null) {
+        //     return redirect()->route('employee.create');
+        // }
+
+        return view('timesheet.history', compact('attendances'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 }

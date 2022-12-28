@@ -40,7 +40,7 @@
         </tr>
         <tr>
             <td width="15%">No. ID</td>
-            <td width="47%">: {{ $employee->user->employee->id_card}}</td>
+            <td width="47%">: {{ $employee->id_card }}</td>
             <td width="50%"><small>Kelebihan kerja (over time) wajib di paraf oleh
                 </small></td>
             <td></td>
