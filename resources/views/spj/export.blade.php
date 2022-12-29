@@ -128,7 +128,7 @@
                 <td>Rp {{number_format($detail->nominal)}}</td>
                 <td>{{ $detail->jumlah}} hari</td>
                 <td></td>
-                <td>Rp {{number_format($detail->total)}}</td>
+                <td>Rp {{ number_format($detail->total) }}</td>
             </tr>
             @endforeach
             <tr align="center">
@@ -203,9 +203,9 @@
             </td>
         </tr>
         <tr>
-            <td width="44%">(..............................)</td>
+            <td width="44%">Iman Suherman</td>
             <td width="40%">{{ $data->user->name }}</td>
-            <td>(..............................)</td>
+            <td>Risa Nurhanipah</td>
         </tr>
     </table>
 </body>

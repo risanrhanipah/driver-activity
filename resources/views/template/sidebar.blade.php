@@ -78,7 +78,13 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('attendance.report_attendance') }}">
                 <i class="icon-book menu-icon"></i>
-                <span class="menu-title">Report</span>
+                <span class="menu-title">Report Attendance</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('spj.report_spj') }}">
+                <i class="icon-book menu-icon"></i>
+                <span class="menu-title">Report SPJ</span>
             </a>
         </li>
         <li class="nav-item">

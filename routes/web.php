@@ -30,7 +30,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/admin', [LoginController::class, 'admin'])->name('admin');
@@ -56,4 +55,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('employee', EmployeeController::class);
     Route::get('/report', [AttendanceController::class, 'report'])->name('report');
     Route::get('/report_attendance', [AttendanceController::class, 'report_attendance'])->name('attendance.report_attendance');
+    Route::get('/report_spj', [PengajuanSPJController::class, 'report_spj'])->name('spj.report_spj');
+    Route::get('/export_spj', [PengajuanSPJController::class, 'export_spj'])->name('export_spj');
 });

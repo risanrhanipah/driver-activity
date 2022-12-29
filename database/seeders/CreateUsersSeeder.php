@@ -23,14 +23,14 @@ class CreateUsersSeeder extends Seeder
             ],
             [
                 'name' => 'Ahmad Fatoni',
-                'email' => 'ahmadfatoni@user.com',
-                'role' => 'user',
+                'email' => 'ahmadfatoni@gn.com',
+                'role' => 'general affair',
                 'password' => bcrypt('123456'),
             ],
             [
                 'name' => 'Iman Suherman',
-                'email' => 'imansuherman@gn.com',
-                'role' => 'general affair',
+                'email' => 'imansuherman@user.com',
+                'role' => 'user',
                 'password' => bcrypt('123456'),
             ],
         ];

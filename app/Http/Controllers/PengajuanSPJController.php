@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SPJExport;
 use App\Models\SPJ;
 use App\Models\User;
 use App\Models\Detailspj;
 use Illuminate\Http\Request;
 use PDF;
+use Excel;
+
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -231,5 +234,18 @@ class PengajuanSPJController extends Controller
         $spj->update();
 
         return redirect()->route('pengajuan.spj')->with('Validasi Sukses');
+    }
+
+    public function report_spj()
+    {
+        $pengajuan_spj = SPJ::with(["user", 'user.employee'])->paginate(5);
+
+        return view('spj.report_spj', compact('pengajuan_spj'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+    public function export_spj()
+    {
+        return Excel::download(new SPJExport, 'Pengajuan SPJ.xlsx');
     }
 }

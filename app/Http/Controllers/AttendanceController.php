@@ -82,13 +82,13 @@ class AttendanceController extends Controller
         ]);
 
         // dd($request);
-        $check = Attendance::whereDate('date_in', '2022-12-08')->where('user_id', auth()->user()->id)->first();
+        $check = Attendance::whereDate('date_in', '2022-12-09')->where('user_id', auth()->user()->id)->first();
         // $check = Attendance::whereDate('date_in', date('Y-m-d'))->where('user_id', auth()->user()->id)->first();
         // dd($check);
         if ($request->status == 'in') {
 
             if ($check == null) {
-                $data['date_in'] = '2022-12-08 07:30:00'; // Tanggal Input Menjadi Tanggal Absensi
+                $data['date_in'] = '2022-12-09 08:30:00'; // Tanggal Input Menjadi Tanggal Absensi
                 // $data['date_in'] = date('Y-m-d H:i:s'); // Tanggal Input Menjadi Tanggal Absensi
                 $data['km_in'] = $request->km;
                 $data['ket'] = $request->ket;
@@ -100,7 +100,7 @@ class AttendanceController extends Controller
         } else {
             $in = $check->date_in;
             $tanggal_in = new DateTime($in);
-            $tanggal_out = new DateTime('2022-12-08 22:00:00');
+            $tanggal_out = new DateTime('2022-12-09 17:00:00');
             // $tanggal_out = new DateTime();
             $selisih = $tanggal_in->diff($tanggal_out);
 
@@ -195,7 +195,7 @@ class AttendanceController extends Controller
     {
         $employee = Employee::with('user')->where('user_id', $id)->first();
 
-        $timesheet = Attendance::with('user')->with('user.employee')->get();
+        $timesheet = Attendance::with('user')->with('user.employee')->where('user_id', $id)->get();
         // dd($timesheet);
         $pdf = PDF::loadView('timesheet.show', [
             'attendance' => $timesheet,
